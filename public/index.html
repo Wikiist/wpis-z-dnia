@@ -11,6 +11,7 @@
   /* Same family as KidStella and Ask Wiktor: cream room, navy ink, orange action, yellow marker for curriculum codes */
   :root { --bg:#fff7eb; --paper:#ffffff; --ink:#17294a; --muted:#5b6782; --line:#ecdcc4; --green:#1450b8; --green-soft:#e3eafb; --accent:#ff8b3d; --accent-deep:#d9681c; --marker:#ffe08a; --shadow:0 6px 20px rgba(23,41,74,.08); }
   @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --bg:#0f1a33; --paper:#17264a; --ink:#fff4e3; --muted:#b9c3dc; --line:#2a3c66; --green:#9db8ff; --green-soft:#24386a; --accent:#ff9a55; --accent-deep:#d9681c; --marker:rgba(255,215,94,.35); --shadow:0 6px 20px rgba(0,0,0,.3); color-scheme: dark; } }
+  :root[data-theme="dark"] { --bg:#0f1a33; --paper:#17264a; --ink:#fff4e3; --muted:#b9c3dc; --line:#2a3c66; --green:#9db8ff; --green-soft:#24386a; --accent:#ff9a55; --accent-deep:#d9681c; --marker:rgba(255,215,94,.35); --shadow:0 6px 20px rgba(0,0,0,.3); color-scheme: dark; }
   * { box-sizing: border-box; }
   body { margin:0; background: var(--bg); color: var(--ink); font: 16px/1.55 Nunito, "Segoe UI", system-ui, sans-serif; }
   main { max-width: 1080px; margin: 0 auto; padding: 28px max(16px, env(safe-area-inset-left)) 40px max(16px, env(safe-area-inset-right)); }
@@ -19,6 +20,9 @@
   h1 span { background: linear-gradient(transparent 58%, var(--marker) 58%, var(--marker) 92%, transparent 92%); padding: 0 3px; }
   .lede { color: var(--muted); margin: 8px 0 0; max-width: 62ch; font-size: 16.5px; }
   .badge { font: 700 13px "Baloo 2", Nunito, sans-serif; color: var(--green); background: var(--green-soft); border-radius: 999px; padding: 6px 13px; white-space: nowrap; }
+  .tools { display:flex; gap: 8px; align-items: center; }
+  .theme { font: 700 15px Nunito, sans-serif; width: 36px; height: 32px; border-radius: 999px; background: var(--paper); color: var(--ink); border: 2px solid var(--line); cursor: pointer; line-height: 1; }
+  .theme:hover { border-color: var(--accent); }
   .grid { display:grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 18px; align-items: start; }
   @media (max-width: 860px) { .grid { grid-template-columns: 1fr; } h1 { font-size: 32px; } }
   .card { background: var(--paper); border-radius: 20px; padding: 18px 20px; box-shadow: var(--shadow); min-width: 0; }
@@ -62,7 +66,10 @@
       <h1><span>Wpis z dnia</span></h1>
       <p class="lede">Kilka zdań o tym, co dziś działo się w grupie, zamienia się we wpis do dziennika zgodny z nową podstawą programową, z obszarami, sprawczością dzieci i wiadomością dla rodziców.</p>
     </div>
-    <span class="badge">Podstawa programowa 2026 · Dz.U. poz. 378</span>
+    <div class="tools">
+      <span class="badge">Podstawa programowa 2026 · Dz.U. poz. 378</span>
+      <button type="button" class="theme" id="theme"></button>
+    </div>
   </header>
 
   <div class="grid">
@@ -91,11 +98,24 @@
 
   <footer>
     <span>Źródło: rozporządzenie MEN z 11 marca 2026 r. (Dz.U. 2026 poz. 378), załącznik nr 1. Wpis to propozycja do sprawdzenia przez nauczyciela.</span>
-    <span>Demo zbudowane w jeden dzień z Claude Code przez <a href="https://ask-wiktor.vercel.app/?lang=pl" target="_blank" rel="noopener">Wiktora Grzyba</a> · <a href="https://github.com/Wikiist/wpis-z-dnia" target="_blank" rel="noopener">kod</a></span>
   </footer>
 </main>
 <script>
   const $ = (id) => document.getElementById(id);
+  const themeBtn = $("theme");
+  const sysDark = window.matchMedia ? window.matchMedia("(prefers-color-scheme: dark)") : { matches: false };
+  let theme = null;
+  try { theme = localStorage.getItem("wpisTheme"); } catch {}
+  const isDark = () => (theme ? theme === "dark" : sysDark.matches);
+  function applyTheme() {
+    if (theme) document.documentElement.dataset.theme = theme; else delete document.documentElement.dataset.theme;
+    const dark = isDark();
+    themeBtn.textContent = dark ? "☀" : "☾";
+    const label = dark ? "Włącz tryb jasny" : "Włącz tryb ciemny";
+    themeBtn.setAttribute("aria-label", label); themeBtn.title = label;
+  }
+  themeBtn.addEventListener("click", () => { theme = isDark() ? "light" : "dark"; try { localStorage.setItem("wpisTheme", theme); } catch {} applyTheme(); });
+  applyTheme();
   const out = $("out"), go = $("go");
   const EXAMPLES = [
     "Rano spacer do parku, zbieraliśmy liście i kasztany. Dzieci zaproponowały, żeby posegregować je według koloru i wielkości, same ustaliły zasady. Potem w sali zrobiliśmy z nich ludziki. Po obiedzie słuchaliśmy opowiadania o jeżu, który szykuje się do zimy.",
