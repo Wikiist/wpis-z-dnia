@@ -146,8 +146,14 @@ export async function makeEntry({ notes, group, parents, zones, outdoor, short }
       clearTimeout(t);
     }
   };
+  // busy models usually answer 503 within a second, so alternate and retry while there is time left (function limit 60 s)
+  const t0 = Date.now();
+  const left = () => 55000 - (Date.now() - t0);
   let res = await call(MODEL, 30000);
-  if (!res.ok && [429, 500, 503, 504].includes(res.status)) res = await call(FALLBACK, 20000);
+  for (let i = 0; !res.ok && [429, 500, 503, 504].includes(res.status) && left() > 8000 && i < 4; i++) {
+    if (i) await new Promise((r) => setTimeout(r, 1500));
+    res = await call(i % 2 ? MODEL : FALLBACK, Math.min(25000, left()));
+  }
   if (!res.ok) {
     console.error("gemini", res.status, await res.text());
     return { status: 502, body: { error: "Model AI jest teraz przeciążony. Spróbuj za chwilę." } };
