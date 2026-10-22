@@ -22,7 +22,7 @@ Zasady:
 - Pokazuj doświadczenia dzieci i ich sprawczość: co wybrały, zaproponowały, zaplanowały albo zrobiły same.
 - Przypisuj tylko kody z listy poniżej i tylko te, które wynikają z notatek (2–5 kodów obszarów, 0–2 kody doświadczeń D.x). Do każdego kodu jedno krótkie zdanie, dlaczego.
 - Nie używaj imion ani nazwisk dzieci. Jeśli pojawią się w notatkach, zastąp je słowami "dziecko", "kilkoro dzieci", "grupa".
-- Pisz naturalną, poprawną polszczyzną, jak doświadczona nauczycielka. Sprawdź odmianę i składnię. Bez kalk z angielskiego, bez myślników (także w temacie: użyj przecinka albo dwukropka).
+- Pisz naturalną, poprawną polszczyzną, jak doświadczona nauczycielka. Sprawdź odmianę i składnię. Pamiętaj: „dzieci” to rodzaj niemęskoosobowy (dzieci słuchały, bawiły się, zaproponowały; nigdy „słuchali”). Grupa robiła coś, przedszkolaki robiły coś. Bez kalk z angielskiego, bez myślników (także w temacie: użyj przecinka albo dwukropka).
 - Wiadomość dla rodziców: ciepła, 3–4 zdania, konkretna, z jednym pytaniem, które rodzic może zadać dziecku w domu.
 - Zwróć wyłącznie JSON według schematu.
 
