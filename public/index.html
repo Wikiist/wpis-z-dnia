@@ -4,46 +4,50 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Wpis z dnia · asystent dokumentacji przedszkolnej</title>
-<meta name="description" content="Z kilku zdań o dniu grupy powstaje wpis do dziennika w układzie planu dnia, z kodami nowej podstawy programowej (2026) przy każdej aktywności, także w strefach planu daltońskiego i na dworze.">
+<meta name="description" content="Opisz dzień grupy własnymi słowami. Dostaniesz wpis do dziennika z kodami nowej podstawy programowej (2026) i wiadomość dla rodziców.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
   /* Same family as KidStella and Ask Wiktor: cream room, navy ink, orange action, yellow marker for curriculum codes */
-  :root { --bg:#fff7eb; --paper:#ffffff; --ink:#17294a; --muted:#5b6782; --line:#ecdcc4; --green:#1450b8; --green-soft:#e3eafb; --accent:#ff8b3d; --accent-deep:#d9681c; --marker:#ffe08a; --shadow:0 6px 20px rgba(23,41,74,.08); }
-  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --bg:#0f1a33; --paper:#17264a; --ink:#fff4e3; --muted:#b9c3dc; --line:#2a3c66; --green:#9db8ff; --green-soft:#24386a; --accent:#ff9a55; --accent-deep:#d9681c; --marker:rgba(255,215,94,.35); --shadow:0 6px 20px rgba(0,0,0,.3); color-scheme: dark; } }
-  :root[data-theme="dark"] { --bg:#0f1a33; --paper:#17264a; --ink:#fff4e3; --muted:#b9c3dc; --line:#2a3c66; --green:#9db8ff; --green-soft:#24386a; --accent:#ff9a55; --accent-deep:#d9681c; --marker:rgba(255,215,94,.35); --shadow:0 6px 20px rgba(0,0,0,.3); color-scheme: dark; }
+  :root { --bg:#fff7eb; --paper:#ffffff; --ink:#17294a; --muted:#5b6782; --line:#ecdcc4; --green:#1450b8; --green-soft:#e3eafb; --accent:#ff8b3d; --accent-deep:#d9681c; --marker:#ffe08a; --bubble:#e3eafb; --shadow:0 6px 20px rgba(23,41,74,.08); }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --bg:#0f1a33; --paper:#17264a; --ink:#fff4e3; --muted:#b9c3dc; --line:#2a3c66; --green:#9db8ff; --green-soft:#24386a; --accent:#ff9a55; --accent-deep:#d9681c; --marker:rgba(255,215,94,.35); --bubble:#24386a; --shadow:0 6px 20px rgba(0,0,0,.3); color-scheme: dark; } }
+  :root[data-theme="dark"] { --bg:#0f1a33; --paper:#17264a; --ink:#fff4e3; --muted:#b9c3dc; --line:#2a3c66; --green:#9db8ff; --green-soft:#24386a; --accent:#ff9a55; --accent-deep:#d9681c; --marker:rgba(255,215,94,.35); --bubble:#24386a; --shadow:0 6px 20px rgba(0,0,0,.3); color-scheme: dark; }
   * { box-sizing: border-box; }
   body { margin:0; background: var(--bg); color: var(--ink); font: 16px/1.55 Nunito, "Segoe UI", system-ui, sans-serif; }
   main { max-width: 1080px; margin: 0 auto; padding: 28px max(16px, env(safe-area-inset-left)) 40px max(16px, env(safe-area-inset-right)); }
   header { display:flex; justify-content: space-between; align-items: flex-end; gap: 16px; flex-wrap: wrap; margin-bottom: 18px; }
   h1 { font-family: "Baloo 2", Nunito, system-ui, sans-serif; font-weight: 800; font-size: 40px; line-height: 1.05; margin: 0; letter-spacing: -.3px; }
   h1 span { background: linear-gradient(transparent 58%, var(--marker) 58%, var(--marker) 92%, transparent 92%); padding: 0 3px; }
-  .lede { color: var(--muted); margin: 8px 0 0; max-width: 62ch; font-size: 16.5px; }
+  .lede { color: var(--muted); margin: 8px 0 0; max-width: 58ch; font-size: 16.5px; }
   .badge { font: 700 13px "Baloo 2", Nunito, sans-serif; color: var(--green); background: var(--green-soft); border-radius: 999px; padding: 6px 13px; white-space: nowrap; }
   .tools { display:flex; gap: 8px; align-items: center; }
   .theme { font: 700 15px Nunito, sans-serif; width: 36px; height: 32px; border-radius: 999px; background: var(--paper); color: var(--ink); border: 2px solid var(--line); cursor: pointer; line-height: 1; }
   .theme:hover { border-color: var(--accent); }
   .grid { display:grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 18px; align-items: start; }
   @media (max-width: 860px) { .grid { grid-template-columns: 1fr; } h1 { font-size: 32px; } }
+  .stack { display:flex; flex-direction: column; gap: 14px; min-width: 0; }
   .card { background: var(--paper); border-radius: 20px; padding: 18px 20px; box-shadow: var(--shadow); min-width: 0; }
-  label { font-weight: 700; display:block; margin-bottom: 6px; font-family: "Baloo 2", Nunito, sans-serif; font-size: 18px; }
-  textarea { width:100%; min-height: 190px; resize: vertical; font: inherit; padding: 12px 14px; border-radius: 14px; border: 2px solid var(--line); background: var(--bg); color: var(--ink); }
-  textarea:focus, select:focus, button:focus-visible { outline: 3px solid var(--marker); outline-offset: 1px; }
+  .in-head { display:flex; justify-content: space-between; align-items: center; gap: 8px; margin-bottom: 8px; }
+  label.big { font-weight: 700; font-family: "Baloo 2", Nunito, sans-serif; font-size: 19px; margin: 0; }
+  textarea { width:100%; min-height: 220px; resize: vertical; font: inherit; padding: 12px 14px; border-radius: 14px; border: 2px solid var(--line); background: var(--bg); color: var(--ink); }
+  textarea:focus, select:focus, button:focus-visible, .seg input:focus-visible + span { outline: 3px solid var(--marker); outline-offset: 1px; }
+  .parts { display:flex; flex-wrap: wrap; gap: 6px; margin: 0 0 8px; }
+  .parts button { font: 700 13.5px Nunito, sans-serif; background: var(--paper); color: var(--ink); border: 2px solid var(--line); border-radius: 999px; padding: 3px 11px; cursor: pointer; }
+  .parts button:hover { border-color: var(--accent); }
+  .mic { font: 700 14px Nunito, sans-serif; background: var(--paper); color: var(--ink); border: 2px solid var(--line); border-radius: 999px; padding: 4px 12px; cursor: pointer; white-space: nowrap; }
+  .mic[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: #fff; }
   .extra { margin-top: 10px; border: 2px solid var(--line); border-radius: 14px; padding: 8px 12px; background: var(--bg); }
-  .extra summary { cursor: pointer; font: 700 15px Nunito, sans-serif; color: var(--ink); }
+  .extra summary { cursor: pointer; font: 700 15px Nunito, sans-serif; }
+  .extra summary small { font-weight: 600; color: var(--muted); }
   .extra[open] summary { margin-bottom: 8px; }
   textarea.small { min-height: 90px; background: var(--paper); }
-  .zone { margin: 6px 0 10px; }
-  .zone b { font-family: "Baloo 2", Nunito, sans-serif; font-size: 16px; }
-  .chips { display:flex; flex-wrap: wrap; gap: 6px; margin-top: 4px; }
-  .chip { font: 800 13px "Baloo 2", Nunito, sans-serif; background: var(--marker); border-radius: 8px; padding: 1px 8px; cursor: help; }
-  .values { display:grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 8px; }
-  .values div { background: var(--bg); border-radius: 12px; padding: 8px 10px; }
-  .values b { display:block; font-family: "Baloo 2", Nunito, sans-serif; color: var(--green); }
-  .row { display:flex; gap: 12px; flex-wrap: wrap; align-items: center; margin-top: 12px; }
-  select { font: inherit; padding: 8px 10px; border-radius: 12px; border: 2px solid var(--line); background: var(--bg); color: var(--ink); }
-  .check { display:flex; gap: 8px; align-items:center; font: 600 16px Nunito, sans-serif; margin: 0; }
-  .check input { accent-color: var(--accent); width: 18px; height: 18px; }
+  .row { display:flex; gap: 10px; flex-wrap: wrap; align-items: center; margin-top: 12px; }
+  select { font: inherit; padding: 7px 10px; border-radius: 12px; border: 2px solid var(--line); background: var(--bg); color: var(--ink); }
+  .seg { display:inline-flex; border: 2px solid var(--line); border-radius: 12px; overflow: hidden; background: var(--bg); }
+  .seg label { margin: 0; cursor: pointer; }
+  .seg input { position: absolute; opacity: 0; }
+  .seg span { display:block; padding: 6px 12px; font: 700 14.5px Nunito, sans-serif; color: var(--muted); }
+  .seg input:checked + span { background: var(--paper); color: var(--ink); box-shadow: inset 0 -3px 0 var(--accent); }
   .hint { font-size: 13.5px; color: var(--muted); margin: 8px 0 0; }
   .btns { display:flex; gap: 10px; flex-wrap: wrap; margin-top: 16px; }
   button.primary { font: 800 17px "Baloo 2", Nunito, sans-serif; background: var(--accent); color: #fff; border: 0; border-radius: 16px; padding: 10px 22px; cursor: pointer; box-shadow: 0 4px 0 var(--accent-deep); transition: transform .1s, box-shadow .1s; }
@@ -51,30 +55,38 @@
   button.primary:disabled { opacity: .55; cursor: default; }
   button.ghost { font: 700 15px Nunito, sans-serif; background: var(--paper); color: var(--ink); border: 2px solid var(--line); border-radius: 16px; padding: 9px 16px; cursor: pointer; }
   button.ghost:hover { border-color: var(--accent); }
-  .out h2 { font-family: "Baloo 2", Nunito, sans-serif; font-weight: 800; font-size: 25px; line-height: 1.15; margin: 0 0 4px; }
-  .section { border-top: 2px dashed var(--line); padding-top: 12px; margin-top: 12px; }
-  .section:first-of-type { border-top: 0; padding-top: 0; margin-top: 0; }
-  .label { font: 700 12.5px Nunito, sans-serif; letter-spacing: .9px; text-transform: uppercase; color: var(--green); margin-bottom: 4px; display:flex; justify-content: space-between; align-items:center; gap: 8px; }
-  .copy { font: 700 12.5px Nunito, sans-serif; text-transform: none; letter-spacing: 0; background: var(--paper); color: var(--ink); border: 2px solid var(--line); border-radius: 10px; padding: 3px 10px; cursor: pointer; }
-  .copy:hover { border-color: var(--accent); }
-  .codes { display:flex; flex-direction: column; gap: 10px; margin: 0; padding: 0; list-style: none; }
-  .codes li { display:grid; grid-template-columns: auto 1fr; gap: 10px; align-items: start; }
-  .code { font: 800 15px "Baloo 2", Nunito, sans-serif; background: var(--marker); border-radius: 8px; padding: 1px 8px; font-variant-numeric: tabular-nums; white-space: nowrap; }
-  .codes small { display:block; color: var(--muted); }
-  .plan h3 { font: 800 17px "Baloo 2", Nunito, sans-serif; margin: 12px 0 4px; }
-  .plan h3:first-child { margin-top: 2px; }
-  .item { margin: 0 0 8px; }
-  .item .zn { font: 700 14px Nunito, sans-serif; color: var(--green); display:block; }
-  .item .t { font-weight: 700; }
-  .cov { display:grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 6px; }
-  .cov div { border: 2px solid var(--line); border-radius: 12px; padding: 6px 9px; font-size: 13.5px; color: var(--muted); }
+  .head { display:flex; justify-content: space-between; align-items: center; gap: 8px; margin-bottom: 8px; }
+  .head h2 { font: 800 19px "Baloo 2", Nunito, sans-serif; margin: 0; }
+  .head .btnset { display:flex; gap: 6px; flex-wrap: wrap; justify-content: flex-end; }
+  .copy { font: 700 13.5px Nunito, sans-serif; background: var(--accent); color: #fff; border: 0; border-radius: 10px; padding: 5px 12px; cursor: pointer; }
+  .copy.alt { background: var(--paper); color: var(--ink); border: 2px solid var(--line); padding: 3px 10px; }
+  .topic { font-weight: 700; margin: 0 0 6px; }
+  .plan h3 { font: 700 13px Nunito, sans-serif; letter-spacing: .6px; text-transform: uppercase; color: var(--green); margin: 12px 0 2px; }
+  .plan h3:first-child { margin-top: 0; }
+  .plan p { margin: 0 0 4px; }
+  .plan .zn { font-weight: 700; }
+  .cd { font: 700 12.5px "Baloo 2", Nunito, sans-serif; color: var(--muted); white-space: nowrap; }
+  .cd span { cursor: help; border-bottom: 1px dotted var(--line); }
+  .bubble { background: var(--bubble); border-radius: 18px 18px 18px 4px; padding: 12px 14px; margin: 0; }
+  .glance { display:flex; flex-direction: column; gap: 8px; }
+  .dots { display:flex; gap: 4px; align-items: center; flex-wrap: wrap; }
+  .dots i { width: 12px; height: 12px; border-radius: 50%; border: 2px solid var(--line); }
+  .dots i.on { background: var(--marker); border-color: var(--marker); }
+  .glance p { margin: 0; }
+  .glance b { font-family: "Baloo 2", Nunito, sans-serif; }
+  details.more { border-top: 2px dashed var(--line); padding-top: 10px; }
+  details.more summary { cursor: pointer; font: 700 15px Nunito, sans-serif; color: var(--green); }
+  .sub { margin-top: 12px; }
+  .sub h4 { font: 700 12.5px Nunito, sans-serif; letter-spacing: .8px; text-transform: uppercase; color: var(--green); margin: 0 0 4px; }
+  .sub p { margin: 0 0 4px; }
+  .code { font: 800 14px "Baloo 2", Nunito, sans-serif; background: var(--marker); border-radius: 8px; padding: 0 7px; margin-right: 6px; }
+  .cov { display:grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 6px; }
+  .cov div { border: 2px solid var(--line); border-radius: 12px; padding: 5px 9px; font-size: 13.5px; color: var(--muted); }
   .cov div.on { border-color: transparent; background: var(--marker); color: var(--ink); }
   .cov b { display:block; font-family: "Baloo 2", Nunito, sans-serif; font-size: 14.5px; }
-  .label .btnset { display:flex; gap: 6px; flex-wrap: wrap; }
   .empty { color: var(--muted); text-align: center; padding: 44px 10px; }
   .error { color: #c0392b; font-weight: 700; }
-  footer { margin-top: 22px; font-size: 13.5px; color: var(--muted); display:flex; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
-  footer a { color: var(--green); font-weight: 700; }
+  footer { margin-top: 22px; font-size: 13.5px; color: var(--muted); }
   .spinner { display:inline-block; width: 14px; height: 14px; border: 2px solid currentColor; border-right-color: transparent; border-radius: 50%; animation: spin .8s linear infinite; vertical-align: -2px; margin-right: 6px; }
   @keyframes spin { to { transform: rotate(360deg); } }
   @media (prefers-reduced-motion: reduce) { .spinner { animation: none; } button.primary { transition: none; } }
@@ -85,7 +97,7 @@
   <header>
     <div>
       <h1><span>Wpis z dnia</span></h1>
-      <p class="lede">Kilka zdań o dniu grupy zamienia się we wpis do dziennika w układzie planu dnia: każda aktywność, także w strefach i na dworze, z kodami z nowej podstawy programowej.</p>
+      <p class="lede">Opisz dzień grupy własnymi słowami, tak jak opowiadasz go koleżance. Dostaniesz wpis do dziennika z kodami nowej podstawy programowej i wiadomość dla rodziców.</p>
     </div>
     <div class="tools">
       <span class="badge">Podstawa programowa 2026 · Dz.U. poz. 378</span>
@@ -95,16 +107,23 @@
 
   <div class="grid">
     <section class="card" aria-labelledby="in-h">
-      <label id="in-h" for="notes">Co dziś robiła grupa?</label>
-      <textarea id="notes" maxlength="1500" placeholder="Np. Rano zabawa z chustą animacyjną i nazwy kolorów. Mycie rąk przed śniadaniem. Zajęcia: improwizacje na instrumentach, nauka wierszyka, rzuty piłeczkami…"></textarea>
+      <div class="in-head">
+        <label class="big" id="in-h" for="notes">Jak minął dzień?</label>
+        <button type="button" class="mic" id="mic" hidden aria-pressed="false">🎤 Podyktuj</button>
+      </div>
+      <div class="parts" aria-label="Wstaw część dnia">
+        <button type="button" data-part="Rano">Rano</button>
+        <button type="button" data-part="Higiena">Higiena</button>
+        <button type="button" data-part="Zajęcia">Zajęcia</button>
+        <button type="button" data-part="Na dworze">Na dworze</button>
+        <button type="button" data-part="Strefy">Strefy</button>
+      </div>
+      <textarea id="notes" maxlength="3000" placeholder="Np. Rano zabawa z chustą, powtarzaliśmy kolory. Mycie rąk przed śniadaniem. Zajęcia: gra na trójkątach i bębenkach, nowy wierszyk. Na dworze: berek, tunel w piaskownicy, liście do kącika jesiennego."></textarea>
+      <p class="hint">Kolejność i forma są dowolne. Przyciski nad polem tylko pomagają nie zapomnieć o części dnia.</p>
       <details class="extra" id="zones-box">
-        <summary>Aktywności w strefach (plan daltoński)</summary>
-        <textarea id="zones" class="small" maxlength="1500" placeholder="Np. Strefa przyrodnicza: magnesy i przedmioty z sali. Strefa językowa: układanie żołędzi na literach. Strefa ciszy: wiatraczek do dmuchania i kartki do rysowania emocji…"></textarea>
-        <p class="hint">Wpisz to, co przygotowałaś w kącikach na dziś lub na ten tydzień, a nie to, co robiło każde dziecko. Strefa ciszy też się liczy.</p>
-      </details>
-      <details class="extra" id="outdoor-box">
-        <summary>Aktywność outdoorowa: plac zabaw, ogród, spacer</summary>
-        <textarea id="outdoor" class="small" maxlength="600" placeholder="Np. Na placu zabaw dzieci same ustaliły zasady gry w berka, budowały w piaskownicy tunel, zbierały patyki do kącika przyrody…"></textarea>
+        <summary>Strefy w tym tygodniu <small id="zones-state">(wpisz raz, zapamiętam)</small></summary>
+        <textarea id="zones" class="small" maxlength="1500" placeholder="Np. Strefa przyrodnicza: magnesy i przedmioty z sali. Strefa językowa: żołędzie na konturach liter. Strefa ciszy: poduszki, książeczki, wiatraczek do dmuchania."></textarea>
+        <p class="hint">Co jest przygotowane w kącikach na ten tydzień. Ta przeglądarka zapamięta tekst, więc jutro nie trzeba go wpisywać.</p>
       </details>
       <div class="row">
         <select id="group" aria-label="Wiek grupy">
@@ -112,31 +131,31 @@
           <option value="5–6 lat" selected>5–6 lat</option>
           <option value="grupa mieszana">grupa mieszana</option>
         </select>
-        <label class="check"><input type="checkbox" id="parents" checked> wiadomość dla rodziców</label>
-        <label class="check"><input type="checkbox" id="short"> krótko, hasłami (dziennik papierowy)</label>
+        <div class="seg" role="radiogroup" aria-label="Rodzaj dziennika">
+          <label><input type="radio" name="fmt" value="full" checked><span>Dziennik elektroniczny</span></label>
+          <label><input type="radio" name="fmt" value="short"><span>Papierowy</span></label>
+        </div>
       </div>
-      <p class="hint">Nie wpisuj imion ani nazwisk dzieci. Jeśli się pojawią, asystent je pominie. Notatki nie są nigdzie zapisywane.</p>
+      <p class="hint">Bez imion i nazwisk dzieci. Notatki nie są nigdzie zapisywane.</p>
       <div class="btns">
         <button class="primary" id="go">Przygotuj wpis</button>
         <button class="ghost" id="example" type="button">Wstaw przykład</button>
       </div>
     </section>
 
-    <section class="card out" id="out" aria-live="polite">
-      <div class="empty">Tu pojawi się wpis do dziennika w układzie planu dnia, z kodami przy każdej aktywności.<br>Możesz zacząć od przykładu.</div>
-    </section>
+    <div class="stack" id="out" aria-live="polite">
+      <div class="card empty">Tu pojawią się dwie rzeczy do skopiowania: wpis do dziennika i wiadomość dla rodziców.<br>Możesz zacząć od przykładu.</div>
+    </div>
   </div>
 
-  <footer>
-    <span>Źródło: rozporządzenie MEN z 11 marca 2026 r. (Dz.U. 2026 poz. 378), załącznik nr 1. Wpis to propozycja do sprawdzenia przez nauczyciela.</span>
-  </footer>
+  <footer>Źródło: rozporządzenie MEN z 11 marca 2026 r. (Dz.U. 2026 poz. 378), załącznik nr 1. Wpis to propozycja do sprawdzenia przez nauczyciela.</footer>
 </main>
 <script>
   const $ = (id) => document.getElementById(id);
+  const store = { get(k) { try { return localStorage.getItem(k); } catch { return null; } }, set(k, v) { try { localStorage.setItem(k, v); } catch {} } };
   const themeBtn = $("theme");
   const sysDark = window.matchMedia ? window.matchMedia("(prefers-color-scheme: dark)") : { matches: false };
-  let theme = null;
-  try { theme = localStorage.getItem("wpisTheme"); } catch {}
+  let theme = store.get("wpisTheme");
   const isDark = () => (theme ? theme === "dark" : sysDark.matches);
   function applyTheme() {
     if (theme) document.documentElement.dataset.theme = theme; else delete document.documentElement.dataset.theme;
@@ -145,81 +164,114 @@
     const label = dark ? "Włącz tryb jasny" : "Włącz tryb ciemny";
     themeBtn.setAttribute("aria-label", label); themeBtn.title = label;
   }
-  themeBtn.addEventListener("click", () => { theme = isDark() ? "light" : "dark"; try { localStorage.setItem("wpisTheme", theme); } catch {} applyTheme(); });
+  themeBtn.addEventListener("click", () => { theme = isDark() ? "light" : "dark"; store.set("wpisTheme", theme); applyTheme(); });
   applyTheme();
-  const out = $("out"), go = $("go");
+
+  const out = $("out"), go = $("go"), notes = $("notes"), zones = $("zones");
+
+  // zones are prepared for a week, so they are remembered in this browser only
+  zones.value = store.get("wpisZones") || "";
+  const zonesState = () => { $("zones-state").textContent = zones.value.trim() ? "(zapamiętane w tej przeglądarce)" : "(wpisz raz, zapamiętam)"; };
+  zones.addEventListener("input", () => { store.set("wpisZones", zones.value); zonesState(); });
+  zonesState();
+
+  // part-of-day buttons start a new line with a label at the end of the notes
+  document.querySelectorAll("[data-part]").forEach((b) => b.addEventListener("click", () => {
+    const v = notes.value.replace(/\s+$/, "");
+    notes.value = (v ? v + "\n" : "") + b.dataset.part + ": ";
+    notes.focus(); notes.setSelectionRange(notes.value.length, notes.value.length);
+  }));
+
+  // dictation where the browser supports it (Chrome, Edge, Safari)
+  const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+  if (SR) {
+    const mic = $("mic"); mic.hidden = false;
+    let rec = null;
+    mic.addEventListener("click", () => {
+      if (rec) { rec.stop(); return; }
+      rec = new SR(); rec.lang = "pl-PL"; rec.continuous = true; rec.interimResults = false;
+      rec.onresult = (e) => {
+        for (let i = e.resultIndex; i < e.results.length; i++) if (e.results[i].isFinal) {
+          const t = e.results[i][0].transcript.trim();
+          notes.value = notes.value.replace(/\s*$/, notes.value.trim() ? " " : "") + t;
+        }
+      };
+      rec.onend = () => { rec = null; mic.setAttribute("aria-pressed", "false"); mic.textContent = "🎤 Podyktuj"; };
+      rec.start(); mic.setAttribute("aria-pressed", "true"); mic.textContent = "■ Zakończ";
+    });
+  }
+
   const EXAMPLES = [
-    "Rano zabawa z chustą animacyjną, dzieci powtarzały nazwy kolorów po polsku i po angielsku. Przed śniadaniem mycie rąk, dzieci same pilnowały kolejki do umywalki. Zajęcia: improwizacje na instrumentach do wakacyjnej piosenki, dzieci same wybierały instrumenty. Potem nauka krótkiej rymowanki i zabawa z piłeczkami: rzuty i turlanie w przód, w tył i na boki.",
-    "Rano dzieci budowały z klocków garaże dla swoich aut. Po śniadaniu samodzielne sprzątanie stolików. Zajęcia: most z kartonów dla samochodów. Pierwszy się zawalił, więc dzieci same wymyśliły, jak go wzmocnić, i policzyły, ile aut wytrzyma. Na koniec każde dziecko narysowało swój pomysł na most.",
-    "Rano rozmowa w kręgu o tym, jak się dziś czujemy, i pokazywanie emocji minami. Po zabawie dzieci same odkładały zabawki na miejsce. Zajęcia: przygotowanie występu na Dzień Babci i Dziadka, dzieci podzieliły się rolami i wybrały piosenki. Kilkoro dzieci zrobiło zaproszenia.",
-  ];
-  const EX_ZONES = [
-    "Strefa działań przyrodniczych: odkrywanie, które przedmioty z sali przyciąga magnes. Strefa działań językowych: układanie kamyczków i żołędzi na wybranych literach. Strefa działań artystycznych: malowanie akwarelami zachodu słońca, mieszanie barw. Strefa ciszy: wiatraczek do dmuchania, spokojne oddechy, kartki do rysowania swoich emocji.",
-    "Strefa budowania i konstruowania: budowle z klocków i rolek inspirowane zdjęciami słynnych budowli. Strefa matematyczna: ważenie kasztanów na wadze szalkowej i porównywanie, co cięższe. Strefa czytelnicza: książki o mostach i opowiadanie historyjek obrazkowych. Zadania dzieci wybierają same z tablicy planu.",
-    "Strefa muzyczna: instrumenty z butelek i ćwiczenie rytmu piosenki. Strefa artystyczna: zaproszenia dla babć i dziadków. Strefa umiejętności odpoczywania: wygodne poduchy, ciche nagranie szumu morza, masażyki w parach.",
-  ];
-  const EX_OUT = [
-    "Wyjście do przedszkolnego ogrodu warzywnego: dzieci oglądały grządki i narzędzia ogrodnicze, przypomnieliśmy zasady bezpieczeństwa na dworze.",
-    "Na placu zabaw dzieci budowały z dużych klocków piankowych tor przeszkód i na zmianę go pokonywały, licząc przeszkody.",
-    "Na placu zabaw dzieci same ustaliły zasady gry w berka i pilnowały, żeby wszyscy grali bezpiecznie.",
+    { notes: "Rano zabawa z chustą animacyjną, dzieci powtarzały nazwy kolorów po polsku i po angielsku.\nHigiena: mycie rąk przed śniadaniem, dzieci same pilnowały kolejki do umywalki.\nZajęcia: improwizacje na instrumentach do wakacyjnej piosenki, dzieci same wybierały instrumenty. Nauka krótkiej rymowanki, rzuty i turlanie piłeczek.\nNa dworze: wyjście do ogrodu warzywnego, oglądanie grządek i narzędzi, zasady bezpieczeństwa.",
+      zones: "Strefa przyrodnicza: które przedmioty z sali przyciąga magnes. Strefa językowa: kamyczki i żołędzie na literach. Strefa artystyczna: akwarele, zachód słońca, mieszanie barw. Strefa ciszy: wiatraczek do dmuchania, spokojne oddechy, rysowanie emocji." },
+    { notes: "Rano dzieci budowały z klocków garaże dla aut. Po śniadaniu same sprzątnęły stoliki.\nZajęcia: most z kartonów dla samochodów. Pierwszy się zawalił, więc dzieci wymyśliły, jak go wzmocnić, i policzyły, ile aut wytrzyma. Na koniec każde narysowało swój pomysł na most.\nNa dworze: tor przeszkód z klocków piankowych, liczenie przeszkód.",
+      zones: "Strefa budowania: budowle z klocków i rolek według zdjęć słynnych budowli. Strefa matematyczna: ważenie kasztanów na wadze szalkowej. Strefa czytelnicza: książki o mostach, historyjki obrazkowe." },
   ];
   let ex = 0;
   $("example").addEventListener("click", () => {
-    const i = ex++ % EXAMPLES.length;
-    $("notes").value = EXAMPLES[i]; $("zones").value = EX_ZONES[i]; $("outdoor").value = EX_OUT[i];
-    $("zones-box").open = true; $("outdoor-box").open = true; $("notes").focus();
+    const e = EXAMPLES[ex++ % EXAMPLES.length];
+    notes.value = e.notes; zones.value = e.zones; store.set("wpisZones", zones.value); zonesState();
+    $("zones-box").open = true; notes.focus();
   });
 
   const esc = (s) => String(s || "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
   const ROMAN = ["I", "II", "III", "IV", "V", "VI"];
   const codeStr = (list) => "(" + list.map((c) => c.code).join("; ") + ")";
-  function codes(list) {
-    if (!list.length) return '<p class="hint">Brak w tym wpisie.</p>';
-    return '<ul class="codes">' + list.map((c) => `<li><span class="code">${esc(c.code)}</span><div>${esc(c.why)}<small>${esc(c.area)}: „${esc(c.text)}”</small></div></li>`).join("") + "</ul>";
-  }
-  function chips(list) {
-    if (!list || !list.length) return "";
-    return '<div class="chips">' + list.map((c) => `<span class="chip" title="${esc(c.area)}: ${esc(c.text)}">${esc(c.code)}</span>`).join("") + "</div>";
-  }
+  const cd = (list) => list.length ? ` <span class="cd">${list.map((c) => `<span title="${esc(c.area)}: ${esc(c.text)}">${esc(c.code)}</span>`).join(" · ")}</span>` : "";
+  const line = (p) => `${p.tytul ? `„${p.tytul}” – ` : ""}${p.opis}`;
+
   function planHtml(plan) {
     if (!plan.length) return '<p class="hint">Za mało informacji w notatkach.</p>';
     return '<div class="plan">' + plan.map((s, i) => `<h3>${ROMAN[i]}. ${esc(s.sekcja)}</h3>` + s.pozycje.map((p) =>
-      `<div class="item">${p.strefa ? `<span class="zn">${esc(p.strefa)}</span>` : ""}${p.tytul ? `<span class="t">„${esc(p.tytul)}”</span> – ` : ""}${esc(p.opis)}${chips(p.codes)}</div>`).join("")).join("") + "</div>";
+      `<p>${p.strefa ? `<span class="zn">${esc(p.strefa)}:</span> ` : ""}${esc(line(p))}${cd(p.codes)}</p>`).join("")).join("") + "</div>";
   }
   // plain text in the layout directors know from paper and electronic diaries
-  function planText(plan, onlyZones) {
-    const secs = plan.map((s, i) => ({ ...s, n: ROMAN[i] })).filter((s) => !onlyZones || s.sekcja === "Aktywności w strefach");
-    return secs.map((s) => `${onlyZones ? "Praca w strefach" : s.n + ". " + s.sekcja}:\n` + s.pozycje.map((p) =>
-      `${p.strefa ? p.strefa + ":\n" : ""}${p.tytul ? `„${p.tytul}” – ` : ""}${p.opis}${p.codes.length ? "\n" + codeStr(p.codes) : ""}`).join("\n")).join("\n\n");
+  function planText(r, onlyZones) {
+    const secs = (r.plan_dnia || []).map((s, i) => ({ ...s, n: ROMAN[i] })).filter((s) => !onlyZones || s.sekcja === "Aktywności w strefach");
+    const body = secs.map((s) => `${onlyZones ? "Praca w strefach" : s.n + ". " + s.sekcja}:\n` + s.pozycje.map((p) =>
+      `${p.strefa ? p.strefa + ": " : ""}${line(p)}${p.codes.length ? " " + codeStr(p.codes) : ""}`).join("\n")).join("\n\n");
+    return onlyZones || !r.temat ? body : `Temat dnia: ${r.temat}\n\n${body}`;
   }
-  function coverageHtml(cov) {
-    const on = cov.filter((a) => a.codes.length).length;
-    return `<div class="section"><div class="label">Obszary podstawy dziś: ${on} z 9</div><div class="cov">` +
-      cov.map((a) => `<div class="${a.codes.length ? "on" : ""}"><b>${esc(a.obszar.replace("Obszar ", ""))}</b>${a.codes.length ? esc(a.codes.join("; ")) : "jeszcze nie dziś"}</div>`).join("") + "</div></div>";
+  function glanceHtml(r) {
+    const cov = r.pokrycie || [];
+    const on = cov.filter((a) => a.codes.length);
+    const off = cov.filter((a) => !a.codes.length).map((a) => a.obszar.replace("Obszar ", ""));
+    return `<div class="card glance">
+      <div class="dots" aria-hidden="true">${cov.map((a) => `<i class="${a.codes.length ? "on" : ""}" title="${esc(a.obszar)}"></i>`).join("")}</div>
+      <p><b>Podstawa dziś: ${on.length} z 9 obszarów.</b> ${off.length ? `Jeszcze nie: ${esc(off.join(", "))}.` : "Wszystkie obszary."}</p>
+      ${r.pomysl_na_jutro ? `<p><b>Na jutro:</b> ${esc(r.pomysl_na_jutro)}</p>` : ""}
+    </div>`;
   }
-  function valuesHtml(d) {
+  function moreHtml(r) {
     const names = { samodzielnosc: "Samodzielność", odpowiedzialnosc: "Odpowiedzialność", wspolpraca: "Współpraca", refleksja: "Refleksja" };
-    const items = Object.entries(names).filter(([k]) => d[k]).map(([k, n]) => `<div><b>${n}</b>${esc(d[k])}</div>`);
-    return items.length ? `<div class="section"><div class="label">Wartości planu daltońskiego</div><div class="values">${items.join("")}</div></div>` : "";
+    const d = r.dalton || {};
+    const values = Object.entries(names).filter(([k]) => d[k]).map(([k, n]) => `<p><b>${n}:</b> ${esc(d[k])}</p>`).join("");
+    const exp = (r.doswiadczenia || []).map((c) => `<p><span class="code">${esc(c.code)}</span>${esc(c.why)}</p>`).join("");
+    const cov = (r.pokrycie || []).map((a) => `<div class="${a.codes.length ? "on" : ""}"><b>${esc(a.obszar.replace("Obszar ", ""))}</b>${a.codes.length ? esc(a.codes.join("; ")) : "jeszcze nie dziś"}</div>`).join("");
+    return `<details class="more"><summary>Dla dyrektora i planu daltońskiego</summary>
+      ${r.sprawczosc ? `<div class="sub"><h4>Sprawczość dzieci</h4><p>${esc(r.sprawczosc)}</p></div>` : ""}
+      ${exp ? `<div class="sub"><h4>Doświadczenia edukacyjne (co najmniej raz w roku)</h4>${exp}</div>` : ""}
+      ${values ? `<div class="sub"><h4>Wartości planu daltońskiego</h4>${values}</div>` : ""}
+      <div class="sub"><h4>Obszary podstawy i kody</h4><div class="cov">${cov}</div></div>
+    </details>`;
   }
   const texts = {};
-  function copyBtn(key, label = "Kopiuj") { return `<button class="copy" type="button" data-copy="${key}">${label}</button>`; }
+  const copyBtn = (key, label, alt) => `<button class="copy${alt ? " alt" : ""}" type="button" data-copy="${key}">${label}</button>`;
   function render(r) {
     const plan = r.plan_dnia || [];
-    texts.plan = planText(plan, false);
-    texts.zones = planText(plan, true);
+    texts.plan = planText(r, false);
+    texts.zones = planText(r, true);
     texts.parents = r.dla_rodzicow || "";
     const hasZones = plan.some((s) => s.sekcja === "Aktywności w strefach");
     out.innerHTML = `
-      <div class="section"><div class="label">Temat dnia</div><h2>${esc(r.temat)}</h2></div>
-      <div class="section"><div class="label">Wpis do dziennika <span class="btnset">${copyBtn("plan", "Kopiuj całość")}${hasZones ? copyBtn("zones", "Kopiuj strefy") : ""}</span></div>${planHtml(plan)}
-        ${hasZones ? '<p class="hint">„Kopiuj strefy” daje gotowy osobny wpis „Praca w strefach”, np. jako nowy temat w dzienniku elektronicznym.</p>' : ""}</div>
-      ${coverageHtml(r.pokrycie || [])}
-      ${r.sprawczosc ? `<div class="section"><div class="label">Sprawczość dzieci</div><p>${esc(r.sprawczosc)}</p></div>` : ""}
-      ${(r.doswiadczenia || []).length ? `<div class="section"><div class="label">Doświadczenia edukacyjne (co najmniej raz w roku)</div>${codes(r.doswiadczenia)}</div>` : ""}
-      ${valuesHtml(r.dalton || {})}
-      ${r.dla_rodzicow ? `<div class="section"><div class="label">Wiadomość dla rodziców ${copyBtn("parents")}</div><p>${esc(r.dla_rodzicow)}</p></div>` : ""}
-      ${r.pomysl_na_jutro ? `<div class="section"><div class="label">Pomysł na jutro</div><p>${esc(r.pomysl_na_jutro)}</p></div>` : ""}`;
+      <section class="card">
+        <div class="head"><h2>Do dziennika</h2><span class="btnset">${hasZones ? copyBtn("zones", "Tylko strefy", true) : ""}${copyBtn("plan", "Kopiuj")}</span></div>
+        ${r.temat ? `<p class="topic">Temat dnia: ${esc(r.temat)}</p>` : ""}
+        ${planHtml(plan)}
+        ${moreHtml(r)}
+      </section>
+      ${r.dla_rodzicow ? `<section class="card"><div class="head"><h2>Do rodziców</h2>${copyBtn("parents", "Kopiuj")}</div><p class="bubble">${esc(r.dla_rodzicow)}</p></section>` : ""}
+      ${glanceHtml(r)}`;
     out.querySelectorAll("[data-copy]").forEach((b) => b.addEventListener("click", () => {
       const label = b.textContent;
       const done = () => { b.textContent = "Skopiowano"; setTimeout(() => (b.textContent = label), 1500); };
@@ -227,15 +279,16 @@
     }));
   }
   go.addEventListener("click", async () => {
-    const notes = $("notes").value.trim();
-    if (notes.length < 15) { out.innerHTML = '<p class="error">Opisz dzień w 2–3 zdaniach.</p>'; return; }
+    const text = notes.value.trim();
+    if (text.length < 15) { out.innerHTML = '<p class="card error">Opisz dzień w 2–3 zdaniach.</p>'; return; }
     go.disabled = true; go.innerHTML = '<span class="spinner"></span>Przygotowuję…';
-    out.innerHTML = '<div class="empty"><span class="spinner"></span>Czytam notatki i dopasowuję je do podstawy programowej…</div>';
+    out.innerHTML = '<div class="card empty"><span class="spinner"></span>Czytam notatki i dopasowuję je do podstawy programowej…</div>';
     try {
-      const r = await fetch("/api/entry", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ notes, zones: $("zones").value.trim(), outdoor: $("outdoor").value.trim(), short: $("short").checked, group: $("group").value, parents: $("parents").checked }) });
+      const short = document.querySelector('input[name="fmt"]:checked').value === "short";
+      const r = await fetch("/api/entry", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ notes: text, zones: zones.value.trim(), short, group: $("group").value, parents: true }) });
       const data = await r.json();
-      if (data.error) out.innerHTML = `<p class="error">${esc(data.error)}</p>`; else render(data);
-    } catch { out.innerHTML = '<p class="error">Brak połączenia. Spróbuj ponownie.</p>'; }
+      if (data.error) out.innerHTML = `<p class="card error">${esc(data.error)}</p>`; else render(data);
+    } catch { out.innerHTML = '<p class="card error">Brak połączenia. Spróbuj ponownie.</p>'; }
     go.disabled = false; go.textContent = "Przygotuj wpis";
   });
 </script>

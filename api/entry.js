@@ -20,6 +20,8 @@ const CURRICULUM = [
 
 const SYSTEM = `Jesteś asystentem nauczyciela przedszkola. Z krótkich notatek o dniu grupy przygotowujesz wpis do dziennika zgodny z nową podstawą programową wychowania przedszkolnego (Dz.U. 2026 poz. 378), obowiązującą od 1 września 2026.
 
+Notatki to jeden swobodny tekst, czasem podyktowany głosem: bez kolejności, czasem z etykietami typu „Rano:”, „Higiena:”, „Zajęcia:”, „Na dworze:”, „Strefy:”. Sam przypisz każdą czynność do właściwej sekcji. Osobno możesz dostać strefy przygotowane na cały tydzień: wpisz je w sekcji stref.
+
 Układ wpisu (ramowy plan dnia). Używaj tylko tych sekcji, które wynikają z notatek, w tej kolejności:
 ${SECTIONS.map((s, i) => `${i + 1}. ${s}`).join("\n")}
 
@@ -44,7 +46,8 @@ Zasady języka:
 Pozostałe pola:
 - doswiadczenia: 0–2 kody D.x tylko jeśli wynikają z notatek, z jednym zdaniem dlaczego.
 - dalton: dla samodzielności, odpowiedzialności, współpracy i refleksji jedno zdanie tylko wtedy, gdy notatki wprost to opisują. Refleksja to dzieci, które mówią, oceniają albo porównują to, co zrobiły; sam odpoczynek nią nie jest. Odpowiedzialność tylko wtedy, gdy notatki mówią o dyżurze, sprzątaniu, opiece nad czymś albo dotrzymaniu umowy. Każde zdanie musi dać się wskazać w notatkach; jeśli nie umiesz wskazać zdania, które to mówi, zostaw pusty tekst. Pusty tekst jest lepszy niż zgadywanie.
-- dla_rodzicow: wiadomość, którą nauczycielka wysyła rodzicom w aplikacji przedszkola. Pisze do rodziców w drugiej osobie liczby mnogiej (Wy), ciepło i zwyczajnie, jak do znajomych rodziców, bez urzędowych i sztywnych zwrotów („aktywnie spędziła czas”, „spędziliśmy czas na”, „w ramach zajęć”, „z użyciem”). Zdania zaczynaj od tego, co dzieci robiły: „Dziś dzieci grały na trójkątach…”, „Rano była zabawa z chustą…”. Bez powitania i podpisu. 2–3 zdania o 2–3 najciekawszych konkretach z dnia, potem jedno zdanie zaczynające się od „Zapytajcie w domu” z pytaniem do dziecka o jedną konkretną rzecz z dnia. Pytanie bez rodzaju gramatycznego (np. „co…”, „który…”, nie „co zrobiłeś”). Pytanie dziecka nigdy nie stoi samo, bez tego wstępu.
+- dla_rodzicow: wiadomość, którą nauczycielka wysyła rodzicom w aplikacji przedszkola. Pisze do rodziców w drugiej osobie liczby mnogiej (Wy), ciepło i zwyczajnie, jak do znajomych rodziców, bez urzędowych i sztywnych zwrotów („aktywnie spędziła czas”, „spędziliśmy czas na”, „w ramach zajęć”, „z użyciem”). Zdania zaczynaj od tego, co dzieci robiły: „Dziś dzieci grały na trójkątach…”, „Rano była zabawa z chustą…”. Bez powitania i podpisu. 1–2 krótkie zdania o 2–3 najciekawszych konkretach z dnia (rodzic czyta to w telefonie), potem jedno zdanie zaczynające się od „Zapytajcie w domu” z pytaniem do dziecka o jedną konkretną rzecz z dnia. Pytanie bez rodzaju gramatycznego (np. „co…”, „który…”, nie „co zrobiłeś”). Pytanie dziecka nigdy nie stoi samo, bez tego wstępu.
+- pomysl_na_jutro: jedno krótkie zdanie z jedną konkretną zabawą lub zajęciem na jutro, najlepiej z obszaru podstawy, którego dziś nie było w kodach (np. matematycznego albo cyfrowego). Bez „Kontynuacja…”.
 - Zwróć wyłącznie JSON według schematu.
 
 Lista kodów z podstawy programowej:
@@ -121,13 +124,13 @@ export function normalise(out) {
 }
 
 export async function makeEntry({ notes, group, parents, zones, outdoor, short }, fetchImpl = fetch) {
-  notes = String(notes || "").trim().slice(0, 1500);
+  notes = String(notes || "").trim().slice(0, 3000);
   zones = String(zones || "").trim().slice(0, 1500);
   outdoor = String(outdoor || "").trim().slice(0, 600);
   if (notes.length < 15) return { status: 400, body: { error: "Opisz dzień w 2–3 zdaniach." } };
   const key = process.env.GEMINI_API_KEY;
   if (!key) return { status: 200, body: normalise({ temat: "[mock] brak klucza GEMINI_API_KEY", plan_dnia: [{ sekcja: "Sytuacje edukacyjne", pozycje: [{ tytul: "mock", opis: "mock", codes: ["5.2"] }] }] }) };
-  const user = `Grupa: ${group || "nie podano"}.\n${short ? SHORT + "\n" : ""}${parents ? "" : "Wiadomość dla rodziców zostaw pustą.\n"}Notatki nauczycielki:\n${notes}${zones ? `\n\nAktywności przygotowane w strefach:\n${zones}` : ""}${outdoor ? `\n\nPlac zabaw / na zewnątrz:\n${outdoor}` : ""}`;
+  const user = `Grupa: ${group || "nie podano"}.\n${short ? SHORT + "\n" : ""}${parents ? "" : "Wiadomość dla rodziców zostaw pustą.\n"}Notatki nauczycielki:\n${notes}${zones ? `\n\nStrefy przygotowane na ten tydzień:\n${zones}` : ""}${outdoor ? `\n\nPlac zabaw / na zewnątrz:\n${outdoor}` : ""}`;
   const call = async (model, ms) => {
     const ctl = new AbortController();
     const t = setTimeout(() => ctl.abort(), ms);
