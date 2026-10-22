@@ -5,6 +5,9 @@ Asystent dokumentacji dla nauczycieli przedszkola. Kilka zdań o dniu grupy → 
 - tematem dnia i opisem tego, co dzieci naprawdę robiły (bez gotowców),
 - sprawczością dzieci (co wybrały, zaproponowały, zrobiły same),
 - kodami osiągnięć z 9 obszarów podstawy i doświadczeń edukacyjnych (D.1–D.7), z oficjalnym brzmieniem,
+- pracą w strefach (plan daltoński) z kodami dla każdej strefy,
+- aktywnością na placu zabaw i na zewnątrz,
+- wartościami planu daltońskiego (samodzielność, odpowiedzialność, współpraca, refleksja),
 - wiadomością dla rodziców i pomysłem na jutro.
 
 **Live:** https://wpis-z-dnia.vercel.app

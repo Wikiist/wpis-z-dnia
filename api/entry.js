@@ -23,6 +23,9 @@ Zasady:
 - Przypisuj tylko kody z listy poniżej i tylko te, które wynikają z notatek (2–5 kodów obszarów, 0–2 kody doświadczeń D.x). Do każdego kodu jedno krótkie zdanie, dlaczego.
 - Nie używaj imion ani nazwisk dzieci. Jeśli pojawią się w notatkach, zastąp je słowami "dziecko", "kilkoro dzieci", "grupa".
 - Pisz naturalną, poprawną polszczyzną, jak doświadczona nauczycielka. Sprawdź odmianę i składnię. Pamiętaj: „dzieci” to rodzaj niemęskoosobowy (dzieci słuchały, bawiły się, zaproponowały; nigdy „słuchali”). Grupa robiła coś, przedszkolaki robiły coś. Bez kalk z angielskiego, bez myślników (także w temacie: użyj przecinka albo dwukropka).
+- Praca w strefach (plan daltoński): jeśli nauczycielka opisała pracę w strefach (np. matematycznej, językowej, przyrodniczej, konstrukcyjnej, artystycznej, ruchowej, czytelniczej), dla każdej strefy podaj, co dzieci w niej robiły i jakie kody to realizuje (1–2 kody na strefę). Podkreśl, że dzieci same wybierały strefę i zadania z tablicy planu, pracowały w parach lub samodzielnie, pomagały sobie. Jeśli brak opisu stref, zwróć pustą listę.
+- Plac zabaw i aktywność na zewnątrz: jeśli są w notatkach, opisz je jako pełnoprawną część dnia (zabawa swobodna, gry ruchowe, obserwacje przyrody, zasady bezpieczeństwa, uzgadnianie reguł), z 1–3 kodami. Jeśli brak, zostaw puste.
+- Wartości planu daltońskiego (samodzielność, odpowiedzialność, współpraca, refleksja): dla każdej napisz jedno zdanie tylko wtedy, gdy wynika z notatek; w przeciwnym razie pusty tekst.
 - Wiadomość dla rodziców: ciepła, 3–4 zdania, konkretna, z jednym pytaniem, które rodzic może zadać dziecku w domu.
 - Zwróć wyłącznie JSON według schematu.
 
@@ -37,10 +40,13 @@ const SCHEMA = {
     sprawczosc: { type: "string" },
     obszary: { type: "array", items: { type: "object", properties: { code: { type: "string" }, why: { type: "string" } }, required: ["code", "why"] } },
     doswiadczenia: { type: "array", items: { type: "object", properties: { code: { type: "string" }, why: { type: "string" } }, required: ["code", "why"] } },
+    strefy: { type: "array", items: { type: "object", properties: { strefa: { type: "string" }, co: { type: "string" }, codes: { type: "array", items: { type: "string" } } }, required: ["strefa", "co", "codes"] } },
+    na_zewnatrz: { type: "object", properties: { opis: { type: "string" }, codes: { type: "array", items: { type: "string" } } }, required: ["opis", "codes"] },
+    dalton: { type: "object", properties: { samodzielnosc: { type: "string" }, odpowiedzialnosc: { type: "string" }, wspolpraca: { type: "string" }, refleksja: { type: "string" } }, required: ["samodzielnosc", "odpowiedzialnosc", "wspolpraca", "refleksja"] },
     dla_rodzicow: { type: "string" },
     pomysl_na_jutro: { type: "string" },
   },
-  required: ["temat", "wpis", "sprawczosc", "obszary", "doswiadczenia", "dla_rodzicow", "pomysl_na_jutro"],
+  required: ["temat", "wpis", "sprawczosc", "obszary", "doswiadczenia", "strefy", "na_zewnatrz", "dalton", "dla_rodzicow", "pomysl_na_jutro"],
 };
 
 const hits = new Map();
@@ -59,15 +65,22 @@ export function normalise(out) {
       .filter((x) => x && CODES.has(String(x.code)) && (prefix ? String(x.code).startsWith(prefix) : !String(x.code).startsWith("D.")))
       .slice(0, 5)
       .map((x) => ({ code: x.code, why: String(x.why || ""), area: CODES.get(x.code).area, text: CODES.get(x.code).text }));
-  return { ...out, obszary: keep(out.obszary), doswiadczenia: keep(out.doswiadczenia, "D.").slice(0, 2) };
+  const codeList = (arr) => (Array.isArray(arr) ? arr : []).map(String).filter((c) => CODES.has(c) && !c.startsWith("D.")).slice(0, 3).map((c) => ({ code: c, area: CODES.get(c).area, text: CODES.get(c).text }));
+  const strefy = (Array.isArray(out.strefy) ? out.strefy : []).filter((z) => z && z.strefa && z.co).slice(0, 8).map((z) => ({ strefa: String(z.strefa), co: String(z.co), codes: codeList(z.codes) }));
+  const zew = out.na_zewnatrz && out.na_zewnatrz.opis ? { opis: String(out.na_zewnatrz.opis), codes: codeList(out.na_zewnatrz.codes) } : null;
+  const d = out.dalton || {};
+  const dalton = Object.fromEntries(["samodzielnosc", "odpowiedzialnosc", "wspolpraca", "refleksja"].map((k) => [k, String(d[k] || "")]));
+  return { ...out, obszary: keep(out.obszary), doswiadczenia: keep(out.doswiadczenia, "D.").slice(0, 2), strefy, na_zewnatrz: zew, dalton };
 }
 
-export async function makeEntry({ notes, group, parents }, fetchImpl = fetch) {
+export async function makeEntry({ notes, group, parents, zones, outdoor }, fetchImpl = fetch) {
   notes = String(notes || "").trim().slice(0, 1500);
+  zones = String(zones || "").trim().slice(0, 1200);
+  outdoor = String(outdoor || "").trim().slice(0, 600);
   if (notes.length < 15) return { status: 400, body: { error: "Opisz dzień w 2–3 zdaniach." } };
   const key = process.env.GEMINI_API_KEY;
   if (!key) return { status: 200, body: normalise({ temat: "[mock]", wpis: "[mock] brak klucza GEMINI_API_KEY", sprawczosc: "", obszary: [{ code: "5.2", why: "mock" }], doswiadczenia: [], dla_rodzicow: "", pomysl_na_jutro: "" }) };
-  const user = `Grupa: ${group || "nie podano"}.\n${parents ? "" : "Wiadomość dla rodziców zostaw pustą.\n"}Notatki nauczycielki:\n${notes}`;
+  const user = `Grupa: ${group || "nie podano"}.\n${parents ? "" : "Wiadomość dla rodziców zostaw pustą.\n"}Notatki nauczycielki:\n${notes}${zones ? `\n\nPraca w strefach (plan daltoński):\n${zones}` : ""}${outdoor ? `\n\nPlac zabaw / na zewnątrz:\n${outdoor}` : ""}`;
   const call = async (model, ms) => {
     const ctl = new AbortController();
     const t = setTimeout(() => ctl.abort(), ms);

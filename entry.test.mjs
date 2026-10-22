@@ -13,3 +13,10 @@ test("rejects notes that are too short", async () => {
   const r = await makeEntry({ notes: "spacer" });
   assert.equal(r.status, 400);
 });
+
+test("zones and outdoor keep only valid codes", () => {
+  const r = normalise({ obszary: [], doswiadczenia: [], strefy: [{ strefa: "matematyczna", co: "liczenie", codes: ["4.6", "99.1", "D.1"] }], na_zewnatrz: { opis: "gry", codes: ["9.2", "x"] }, dalton: { samodzielnosc: "a" } });
+  assert.deepEqual(r.strefy[0].codes.map((c) => c.code), ["4.6"]);
+  assert.deepEqual(r.na_zewnatrz.codes.map((c) => c.code), ["9.2"]);
+  assert.equal(r.dalton.wspolpraca, "");
+});
