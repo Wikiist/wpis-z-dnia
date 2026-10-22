@@ -1,0 +1,550 @@
+{
+ "source": "Rozporządzenie Ministra Edukacji z 11 marca 2026 r., Dz.U. 2026 poz. 378, załącznik nr 1",
+ "areas": [
+  {
+   "id": 1,
+   "name": "Obszar społeczny",
+   "subtitle": "budowanie relacji, działanie z innymi i dla innych",
+   "items": [
+    {
+     "code": "1.1",
+     "text": "udziela informacji o sobie i swoich rodzicach, w tym podaje swoje imię i nazwisko, adres zamieszkania, wie, komu może takich informacji udzielać"
+    },
+    {
+     "code": "1.2",
+     "text": "bierze udział w aktywnościach zaproponowanych przez innych, zgłasza własne pomysły, jest otwarte na współdziałanie"
+    },
+    {
+     "code": "1.3",
+     "text": "uzgadnia zasady dzielenia się zabawkami lub materiałami w trakcie podejmowanych aktywności"
+    },
+    {
+     "code": "1.4",
+     "text": "bierze udział w podejmowaniu decyzji w grupie, akceptuje wspólnie podjęte decyzje, nawet jeżeli nie są zgodne z jego oczekiwaniami"
+    },
+    {
+     "code": "1.5",
+     "text": "stosuje zwroty grzecznościowe"
+    },
+    {
+     "code": "1.6",
+     "text": "przestrzega zasad zachowania się w grupie i miejscach publicznych, w tym zasad prawidłowego zachowania się na drodze i w środkach komunikacji"
+    },
+    {
+     "code": "1.7",
+     "text": "mówi o emocjach, które ludzie mogą przeżywać w różnych sytuacjach życia codziennego"
+    },
+    {
+     "code": "1.8",
+     "text": "szanuje wszystkie dzieci, ich różne upodobania i potrzeby, podaje przykłady wypowiedzi i zachowań, które mogłyby być dla kogoś krzywdzące"
+    },
+    {
+     "code": "1.9",
+     "text": "szuka rozwiązań w sytuacjach spornych, rozwiązuje proste konflikty z pomocą dorosłych lub innych dzieci"
+    },
+    {
+     "code": "1.10",
+     "text": "pomaga innym w wykonaniu zadania, gdy jest to potrzebne, udziela wskazówek"
+    },
+    {
+     "code": "1.11",
+     "text": "wspiera inne dzieci w pokonywaniu smutku, bezradności i poszukiwaniu rozwiązań problemu"
+    },
+    {
+     "code": "1.12",
+     "text": "dostrzega różnorodność i znaczenie funkcji pełnionych przez ludzi w społeczeństwie, przyjmuje je w zabawie (np. w sklep)"
+    },
+    {
+     "code": "1.13",
+     "text": "charakteryzuje pracę osób wykonujących różne zawody i zdaje sobie sprawę, że dzięki pracy osiąga się dochód"
+    },
+    {
+     "code": "1.14",
+     "text": "wyjaśnia, do czego służą pieniądze, ma świadomość, że ludzie dysponują ograniczoną ilością pieniędzy oraz że po wydaniu pieniędzy na zakup towaru lub usługi nie można ich już wydać na coś innego"
+    },
+    {
+     "code": "1.15",
+     "text": "wyjaśnia, na czym polega oszczędzanie oraz dlaczego warto oszczędzać"
+    },
+    {
+     "code": "1.16",
+     "text": "odczuwa i wyjaśnia swoją przynależność do grup społecznych, w których na co dzień funkcjonuje: rodziny, grupy przedszkolnej, społeczności lokalnej i narodowej"
+    },
+    {
+     "code": "1.17",
+     "text": "wymienia nazwę swojego kraju i jego stolicy, rozpoznaje symbole narodowe (godło, flagę, hymn), orientuje się, że Polska jest jednym z krajów Unii Europejskiej"
+    },
+    {
+     "code": "1.18",
+     "text": "wskazuje funkcje różnych instytucji społecznych (np. rodziny, przedszkola)"
+    },
+    {
+     "code": "1.19",
+     "text": "poznaje i pielęgnuje tradycje lokalne, regionalne i narodowe"
+    },
+    {
+     "code": "1.20",
+     "text": "charakteryzuje wybrane elementy dziedzictwa kulturowego swojego regionu"
+    }
+   ]
+  },
+  {
+   "id": 2,
+   "name": "Obszar osobisty",
+   "subtitle": "poznanie siebie, kierowanie sobą, wybieranie dobra",
+   "items": [
+    {
+     "code": "2.1",
+     "text": "podejmuje różne aktywności, aby realizować swoje pomysły, tworzyć i odkrywać, co sprawia mu radość"
+    },
+    {
+     "code": "2.2",
+     "text": "odkrywa swoje zainteresowania i nazywa swoje mocne strony"
+    },
+    {
+     "code": "2.3",
+     "text": "układa i uzasadnia swój plan działania prowadzący do zakładanego rezultatu"
+    },
+    {
+     "code": "2.4",
+     "text": "przewiduje i nazywa konsekwencje swoich decyzji i działań"
+    },
+    {
+     "code": "2.5",
+     "text": "organizuje i porządkuje miejsce swojej aktywności"
+    },
+    {
+     "code": "2.6",
+     "text": "dąży do ukończenia zadania mimo trudności, wykazując wytrwałość, zaangażowanie i otwartość na informację zwrotną i wskazówki innych"
+    },
+    {
+     "code": "2.7",
+     "text": "wyraża satysfakcję z zadania wykonanego samodzielnie lub w grupie, docenia swój wysiłek"
+    },
+    {
+     "code": "2.8",
+     "text": "wykazuje postawę akceptacji tego, że popełnianie błędów jest czymś naturalnym w procesie uczenia się i stanowi okazję do zdobywania nowych umiejętności"
+    },
+    {
+     "code": "2.9",
+     "text": "rozpoznaje i nazywa swoje emocje związane z różnymi sytuacjami, aktualnymi i z przeszłości"
+    },
+    {
+     "code": "2.10",
+     "text": "odróżnia potrzeby od pragnień (zachcianek), nazywa swoje potrzeby i proponuje sposób ich zaspokojenia, wyraża sprzeciw w sytuacjach niepewności, zagrożenia, braku komfortu"
+    },
+    {
+     "code": "2.11",
+     "text": "ma przekonanie, że nauczyciel lub inne dzieci mogą stanowić wsparcie w trudnych sytuacjach, w razie potrzeby prosi o pomoc"
+    },
+    {
+     "code": "2.12",
+     "text": "stosuje znane mu sposoby radzenia sobie ze stresem"
+    }
+   ]
+  },
+  {
+   "id": 3,
+   "name": "Obszar językowy",
+   "subtitle": "komunikowanie się ze światem",
+   "items": [
+    {
+     "code": "3.1",
+     "text": "uczestniczy w rozmowie, aktywnie słuchając innych osób i wypowiadając się w sposób zrozumiały, przedstawia i próbuje uzasadnić swoją opinię"
+    },
+    {
+     "code": "3.2",
+     "text": "w wypowiedziach posługuje się zdaniami, zwraca uwagę na poprawność gramatyczną i artykulacyjną lub, w razie potrzeby, używa komunikacji wspomagającej i alternatywnej"
+    },
+    {
+     "code": "3.3",
+     "text": "słucha wypowiedzi innych osób oraz tekstów czytanych, takich jak opowiadania, wiersze, baśnie, legendy, mówi o swoich ulubionych książkach"
+    },
+    {
+     "code": "3.4",
+     "text": "rozpoznaje możliwe źródła informacji, korzysta z zachęt do samodzielnego poszukiwania odpowiedzi na nurtujące je pytania"
+    },
+    {
+     "code": "3.5",
+     "text": "obdarza uwagą dzieci i dorosłych, aby rozumieć to, co mówią i czego oczekują, dopytuje, gdy nie jest czegoś pewne"
+    },
+    {
+     "code": "3.6",
+     "text": "analizuje zdobyte informacje i dostrzega te, które są dla niego niewiarygodne lub się wykluczają"
+    },
+    {
+     "code": "3.7",
+     "text": "ocenia zgodność uzyskiwanych informacji z własnymi obserwacjami i doświadczeniami"
+    },
+    {
+     "code": "3.8",
+     "text": "odtwarza i przekształca treść bajek i opowieści, tworzy własne historie"
+    },
+    {
+     "code": "3.9",
+     "text": "dzieli się swoimi wyobrażeniami, skojarzeniami i pomysłami typu „co by było, gdyby”"
+    },
+    {
+     "code": "3.10",
+     "text": "eksperymentuje z językiem, tworzy rymowanki i nowe słowa"
+    },
+    {
+     "code": "3.11",
+     "text": "zapamiętuje i recytuje wierszyki oraz inne krótkie teksty"
+    },
+    {
+     "code": "3.12",
+     "text": "opowiada treść obrazków i historyjek obrazkowych, mówi o swoich przeżyciach, obserwacjach, ważnych zdarzeniach"
+    },
+    {
+     "code": "3.13",
+     "text": "odczytuje znaczenie podstawowych symboli i znaków, tworzy własne symbole, aby wyrazić za ich pomocą określoną informację"
+    },
+    {
+     "code": "3.14",
+     "text": "dokonuje analizy i syntezy głoskowej wybranych wyrazów, wypowiada prawidłowo głoski"
+    },
+    {
+     "code": "3.15",
+     "text": "kreśli linie i kształty zawierające elementy graficzne obecne w literach: łuki, pętelki, fale, owale, zygzaki"
+    },
+    {
+     "code": "3.16",
+     "text": "podejmuje próby pisania liter, wyrazów i krótkich komunikatów w wybrany przez siebie sposób"
+    },
+    {
+     "code": "3.17",
+     "text": "podejmuje próby samodzielnego czytania wyrazów i krótkich tekstów, w tym uzupełnionych obrazkiem"
+    },
+    {
+     "code": "3.18",
+     "text": "nazywa wybrane obiekty z najbliższego otoczenia w języku obcym nowożytnym"
+    },
+    {
+     "code": "3.19",
+     "text": "reaguje na proste polecenia w języku obcym nowożytnym"
+    },
+    {
+     "code": "3.20",
+     "text": "uczestniczy w prostej sytuacji komunikacyjnej w języku obcym nowożytnym"
+    },
+    {
+     "code": "3.21",
+     "text": "powtarza wierszyki i śpiewa piosenki w języku obcym nowożytnym"
+    }
+   ]
+  },
+  {
+   "id": 4,
+   "name": "Obszar matematyczny",
+   "subtitle": "odkrywanie matematyki wokół siebie",
+   "items": [
+    {
+     "code": "4.1",
+     "text": "opisuje sytuacje problemowe bliskie swojemu doświadczeniu, rozpoznaje ich przyczyny"
+    },
+    {
+     "code": "4.2",
+     "text": "poszukuje najlepszych rozwiązań problemu, w razie potrzeby radzi się innych, porównuje wyniki różnych działań, identyfikuje rozwiązania, które sprawdzają się najlepiej"
+    },
+    {
+     "code": "4.3",
+     "text": "stosuje wybrane rozwiązanie i ocenia jego skuteczność"
+    },
+    {
+     "code": "4.4",
+     "text": "charakteryzuje obiekty wokół siebie, porównuje je ze sobą pod względem wielkości i liczby"
+    },
+    {
+     "code": "4.5",
+     "text": "klasyfikuje obiekty według co najmniej dwóch cech jednocześnie"
+    },
+    {
+     "code": "4.6",
+     "text": "liczy w możliwym dla siebie zakresie"
+    },
+    {
+     "code": "4.7",
+     "text": "wyznacza wynik dodawania i odejmowania, pomagając sobie liczeniem na palcach lub na innych zbiorach zastępczych"
+    },
+    {
+     "code": "4.8",
+     "text": "waży i mierzy różne przedmioty, ustala wartość pomiaru, stosując własne i powszechnie przyjęte narzędzia i jednostki miar"
+    },
+    {
+     "code": "4.9",
+     "text": "odczytuje zapis cyfrowy liczb, które obserwuje w najbliższym otoczeniu (np. w kalendarzu, na budynkach, na znakach drogowych, ceny w sklepach)"
+    },
+    {
+     "code": "4.10",
+     "text": "przedstawia wartości liczbowe na różne sposoby graficzne"
+    },
+    {
+     "code": "4.11",
+     "text": "określa kierunki i relacje przestrzenne między obiektami"
+    },
+    {
+     "code": "4.12",
+     "text": "posługuje się pojęciami dotyczącymi następstwa czasu (np. wczoraj, dzisiaj, jutro, rano, wieczorem), posługuje się nazwami pór roku, dni tygodnia i miesięcy"
+    },
+    {
+     "code": "4.13",
+     "text": "rozpoznaje figury geometryczne płaskie: koło, trójkąt, kwadrat, prostokąt i niektóre bryły"
+    },
+    {
+     "code": "4.14",
+     "text": "analizuje i tworzy szeregi oraz powtarzalne wzory, odnajduje symetrię w budowie obiektów przyrodniczych"
+    },
+    {
+     "code": "4.15",
+     "text": "rozpoznaje monety i banknoty, wykonuje proste obliczenia"
+    }
+   ]
+  },
+  {
+   "id": 5,
+   "name": "Obszar przyrodniczy",
+   "subtitle": "odkrywanie przyrody i dbanie o nią",
+   "items": [
+    {
+     "code": "5.1",
+     "text": "rozpoznaje i nazywa rośliny oraz zwierzęta, a także elementy przyrody nieożywionej z najbliższego otoczenia"
+    },
+    {
+     "code": "5.2",
+     "text": "analizuje i bada elementy najbliższego otoczenia, wyciąga wnioski z obserwacji, opisuje zmiany zachodzące w otoczeniu i wymienia niektóre zależności występujące w przyrodzie (np. wzrost roślin, cykle dnia i nocy, pory roku) oraz zjawiska pogodowe"
+    },
+    {
+     "code": "5.3",
+     "text": "zadaje pytania o interesujące je zagadnienia, pyta o przyczyny i cele zaobserwowanych zjawisk i podejmowanych działań, formułuje przypuszczalne wyjaśnienia, sprawdza ich trafność"
+    },
+    {
+     "code": "5.4",
+     "text": "dokumentuje zaobserwowane obiekty, zjawiska oraz procesy zachodzące w przyrodzie"
+    },
+    {
+     "code": "5.5",
+     "text": "wyraża troskę o rośliny i zwierzęta, objaśnia zasady odpowiedzialnej opieki nad zwierzętami domowymi"
+    },
+    {
+     "code": "5.6",
+     "text": "wskazuje na planie, mapie lub globusie znane mu miejsca"
+    },
+    {
+     "code": "5.7",
+     "text": "opisuje Ziemię jako kulę, która razem z innymi planetami krąży wokół Słońca"
+    },
+    {
+     "code": "5.8",
+     "text": "korzysta z narzędzi ogrodniczych przy pielęgnacji roślin ozdobnych i użytkowych"
+    },
+    {
+     "code": "5.9",
+     "text": "opisuje zależności między wybranymi roślinami i zwierzętami"
+    },
+    {
+     "code": "5.10",
+     "text": "rozpoznaje zwierzęta i rośliny z różnych ekosystemów oraz stref klimatycznych"
+    },
+    {
+     "code": "5.11",
+     "text": "segreguje odpady, mając świadomość pozytywnych skutków dla przyrody i gospodarki"
+    },
+    {
+     "code": "5.12",
+     "text": "stosuje zasady rozważnego korzystania z zasobów naturalnych"
+    }
+   ]
+  },
+  {
+   "id": 6,
+   "name": "Obszar techniczny",
+   "subtitle": "poznawanie techniki przez działanie",
+   "items": [
+    {
+     "code": "6.1",
+     "text": "ustala właściwości różnych materiałów"
+    },
+    {
+     "code": "6.2",
+     "text": "wymienia etapy budowania obiektów powstających w najbliższym otoczeniu, rozróżnia materiały, z których powstają budynki"
+    },
+    {
+     "code": "6.3",
+     "text": "tworzy budowle płaskie i przestrzenne z wykorzystaniem różnorodnych materiałów konstrukcyjnych, w tym naturalnych i z odzysku, narzędzi i spoiw; analizuje efekty własnych działań, szuka możliwych ulepszeń"
+    },
+    {
+     "code": "6.4",
+     "text": "buduje maszyny proste – kołowrót, równię pochyłą – i wyjaśnia ich zastosowanie w urządzeniach codziennego użytku"
+    },
+    {
+     "code": "6.5",
+     "text": "buduje obwody elektryczne z użyciem żarówki, brzęczyka i silnika"
+    },
+    {
+     "code": "6.6",
+     "text": "wskazuje przykłady urządzeń zasilanych energią z różnych źródeł"
+    },
+    {
+     "code": "6.7",
+     "text": "przestrzega zasad bezpiecznego korzystania z urządzeń elektrycznych i narzędzi"
+    },
+    {
+     "code": "6.8",
+     "text": "podaje przykłady maszyn i urządzeń, które ułatwiają ludziom życie"
+    },
+    {
+     "code": "6.9",
+     "text": "opisuje różne środki transportu i infrastrukturę znajdujące się w najbliższej okolicy oraz bezpieczne sposoby korzystania z nich"
+    }
+   ]
+  },
+  {
+   "id": 7,
+   "name": "Obszar cyfrowy",
+   "subtitle": "przygotowanie do bezpiecznego funkcjonowania w społeczeństwie cyfrowym",
+   "items": [
+    {
+     "code": "7.1",
+     "text": "korzysta z instrukcji do wykonania zadania, tworzy własne instrukcje"
+    },
+    {
+     "code": "7.2",
+     "text": "rozpoznaje urządzenia cyfrowe i określa do czego służą"
+    },
+    {
+     "code": "7.3",
+     "text": "wskazuje podstawowe zasady higieny cyfrowej"
+    },
+    {
+     "code": "7.4",
+     "text": "wskazuje zagrożenia związane z korzystaniem z Internetu, w tym wynikające z udostępniania informacji o sobie i swoich bliskich"
+    },
+    {
+     "code": "7.5",
+     "text": "określa wpływ mediów na życie codzienne, rozpoznaje reklamy i ma świadomość, czemu one służą"
+    }
+   ]
+  },
+  {
+   "id": 8,
+   "name": "Obszar artystyczny",
+   "subtitle": "odbieranie i tworzenie sztuki",
+   "items": [
+    {
+     "code": "8.1",
+     "text": "poszukuje nowych form ekspresji, tworzyw i technik wyrazu artystycznego do przedstawienia świata i swoich przeżyć, wyraża własne pomysły"
+    },
+    {
+     "code": "8.2",
+     "text": "łączy poznane elementy – przedmioty, obrazy, kształty, słowa, dźwięki, wzorce, symbole – w nowe układy, w nieoczywisty sposób"
+    },
+    {
+     "code": "8.3",
+     "text": "wyraża swoje opinie o dziełach sztuki"
+    },
+    {
+     "code": "8.4",
+     "text": "słucha muzyki, śpiewa, tańczy, tworzy melodie i improwizacje ruchowe, muzykuje – indywidualnie i w grupie"
+    },
+    {
+     "code": "8.5",
+     "text": "rozpoznaje wybrane instrumenty muzyczne, tworzy własne instrumenty muzyczne z różnych materiałów i gra na nich"
+    },
+    {
+     "code": "8.6",
+     "text": "wciela się w różne role podczas spontanicznych i organizowanych działań teatralnych"
+    },
+    {
+     "code": "8.7",
+     "text": "zauważa różnice w dynamice, tempie, barwie i wysokości dźwięków, określa nastrój muzyki"
+    },
+    {
+     "code": "8.8",
+     "text": "wyjaśnia pojęcia określające różne sposoby wyrazu artystycznego – w muzyce, sztukach wizualnych i teatrze"
+    }
+   ]
+  },
+  {
+   "id": 9,
+   "name": "Obszar ruchowy",
+   "subtitle": "rozwijanie się w ruchu, dbanie o zdrowie i bezpieczeństwo",
+   "items": [
+    {
+     "code": "9.1",
+     "text": "podejmuje spontaniczne i zorganizowane aktywności ruchowe (indywidualnie i w grupie) w trosce o zdrowy rozwój"
+    },
+    {
+     "code": "9.2",
+     "text": "uczestniczy w grach terenowych i zabawach ruchowych, ucząc się zasad współzawodnictwa"
+    },
+    {
+     "code": "9.3",
+     "text": "orientuje się w schemacie własnego ciała i wykorzystuje zmysły w zadaniach ruchowych"
+    },
+    {
+     "code": "9.4",
+     "text": "podczas ruchu rozwija podstawowe umiejętności ruchowe, wykorzystując koordynację, równowagę, siłę, zręczność, zwinność, szybkość, skoczność, wytrzymałość"
+    },
+    {
+     "code": "9.5",
+     "text": "posługuje się przedmiotami o zróżnicowanej wielkości i zróżnicowanym ciężarze, stopniowo wymagającymi większej precyzji ruchów"
+    },
+    {
+     "code": "9.6",
+     "text": "prawidłowo trzyma i kontroluje siłę nacisku dłoni na narzędzie pisarskie"
+    },
+    {
+     "code": "9.7",
+     "text": "samodzielnie wykonuje czynności samoobsługowe"
+    },
+    {
+     "code": "9.8",
+     "text": "wyjaśnia, na czym polega zdrowy styl życia, stara się przestrzegać reguł z nim związanych (np. dba o prawidłową postawę ciała)"
+    },
+    {
+     "code": "9.9",
+     "text": "rozpoznaje sytuacje, w których zagrożone są jego bezpieczeństwo lub autonomia"
+    },
+    {
+     "code": "9.10",
+     "text": "zgłasza potrzebę odpoczynku, objawy złego samopoczucia, odczuwane dolegliwości, poszukuje dla siebie bezpiecznych i przyjaznych przestrzeni"
+    },
+    {
+     "code": "9.11",
+     "text": "w czasie aktywności ruchowych przestrzega zasad bezpieczeństwa na terenie przedszkola i poza nim"
+    }
+   ]
+  }
+ ],
+ "experiences": [
+  {
+   "code": "D.1",
+   "text": "jest odbiorcą sztuki, słucha koncertu, ogląda przedstawienie teatralne, odwiedza muzeum lub teatr"
+  },
+  {
+   "code": "D.2",
+   "text": "prowadzi i ilustruje obserwacje przyrody"
+  },
+  {
+   "code": "D.3",
+   "text": "pracując w grupie, wysiewa i uprawia warzywa, zioła lub kwiaty"
+  },
+  {
+   "code": "D.4",
+   "text": "pracując w grupie, przygotowuje wspólne wyjście i bierze w nim udział"
+  },
+  {
+   "code": "D.5",
+   "text": "pracując w grupie, odgrywa uzgodnioną z innymi dziećmi rolę w przygotowaniu i realizacji występu lub spotkania społeczności lokalnej (np. z okazji dnia babci i dziadka, na obchodach święta narodowego, na pikniku rodzinnym)"
+  },
+  {
+   "code": "D.6",
+   "text": "uczestniczy w wydarzeniu promującym zdrowy styl życia (np. w przedszkolnych zawodach sportowych)"
+  },
+  {
+   "code": "D.7",
+   "text": "pracując w grupie, prezentuje innym swoją wiedzę lub efekty wspólnych działań (np. w formie plakatu, wystawy lub kroniki)"
+  }
+ ]
+}

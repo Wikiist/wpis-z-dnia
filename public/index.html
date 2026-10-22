@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wpis z dnia · asystent dokumentacji przedszkolnej</title>
+<meta name="description" content="Z kilku zdań o dniu grupy powstaje wpis do dziennika zgodny z nową podstawą programową wychowania przedszkolnego (2026), z obszarami, sprawczością dzieci i wiadomością dla rodziców.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  /* Notebook on a teacher's desk: warm paper, deep green ink, one marker colour for codes */
+  :root { --bg:#f6f4ee; --paper:#ffffff; --ink:#1f2b26; --muted:#5f6b65; --line:#e3dfd3; --green:#1d6b52; --green-soft:#e6f1ec; --marker:#fbe7a1; --shadow:0 4px 18px rgba(31,43,38,.07); }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --bg:#131a17; --paper:#1b2420; --ink:#ecf1ee; --muted:#a5b1ab; --line:#2c3833; --green:#6fcaa6; --green-soft:#1f3a30; --marker:#5a4a12; --shadow:0 4px 18px rgba(0,0,0,.3); color-scheme: dark; } }
+  * { box-sizing: border-box; }
+  body { margin:0; background: var(--bg); color: var(--ink); font: 16px/1.55 "Source Sans 3", "Segoe UI", system-ui, sans-serif; }
+  main { max-width: 1080px; margin: 0 auto; padding: 28px max(16px, env(safe-area-inset-left)) 40px max(16px, env(safe-area-inset-right)); }
+  header { display:flex; justify-content: space-between; align-items: flex-end; gap: 16px; flex-wrap: wrap; margin-bottom: 18px; }
+  h1 { font-family: Fraunces, Georgia, serif; font-size: 34px; line-height: 1.1; margin: 0; letter-spacing: -.3px; }
+  .lede { color: var(--muted); margin: 6px 0 0; max-width: 62ch; }
+  .badge { font-size: 13px; color: var(--green); background: var(--green-soft); border-radius: 999px; padding: 5px 12px; font-weight: 700; white-space: nowrap; }
+  .grid { display:grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 18px; align-items: start; }
+  @media (max-width: 860px) { .grid { grid-template-columns: 1fr; } }
+  .card { background: var(--paper); border: 1px solid var(--line); border-radius: 14px; padding: 16px 18px; box-shadow: var(--shadow); min-width: 0; }
+  label { font-weight: 700; display:block; margin-bottom: 6px; }
+  textarea { width:100%; min-height: 190px; resize: vertical; font: inherit; padding: 12px 14px; border-radius: 10px; border: 1px solid var(--line); background: var(--bg); color: var(--ink); }
+  textarea:focus, select:focus, button:focus-visible { outline: 3px solid var(--marker); outline-offset: 1px; }
+  .row { display:flex; gap: 12px; flex-wrap: wrap; align-items: center; margin-top: 12px; }
+  select { font: inherit; padding: 8px 10px; border-radius: 8px; border: 1px solid var(--line); background: var(--bg); color: var(--ink); }
+  .check { display:flex; gap: 8px; align-items:center; font-weight: 600; margin: 0; }
+  .hint { font-size: 13.5px; color: var(--muted); margin: 8px 0 0; }
+  .btns { display:flex; gap: 10px; flex-wrap: wrap; margin-top: 14px; }
+  button.primary { font: 700 16px "Source Sans 3", sans-serif; background: var(--green); color: #fff; border: 0; border-radius: 10px; padding: 11px 18px; cursor: pointer; }
+  button.primary:disabled { opacity: .55; cursor: default; }
+  button.ghost { font: 600 14px "Source Sans 3", sans-serif; background: transparent; color: var(--green); border: 1px solid var(--line); border-radius: 10px; padding: 9px 14px; cursor: pointer; }
+  .out h2 { font-family: Fraunces, Georgia, serif; font-size: 22px; margin: 0 0 4px; }
+  .section { border-top: 1px solid var(--line); padding-top: 12px; margin-top: 12px; }
+  .section:first-of-type { border-top: 0; padding-top: 0; margin-top: 0; }
+  .label { font-size: 12.5px; font-weight: 700; letter-spacing: .8px; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; display:flex; justify-content: space-between; align-items:center; gap: 8px; }
+  .copy { font: 600 12.5px "Source Sans 3", sans-serif; text-transform: none; letter-spacing: 0; background: transparent; color: var(--green); border: 1px solid var(--line); border-radius: 8px; padding: 3px 9px; cursor: pointer; }
+  .codes { display:flex; flex-direction: column; gap: 8px; margin: 0; padding: 0; list-style: none; }
+  .codes li { display:grid; grid-template-columns: auto 1fr; gap: 10px; align-items: start; }
+  .code { font-weight: 700; background: var(--marker); border-radius: 6px; padding: 1px 7px; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .codes small { display:block; color: var(--muted); }
+  .empty { color: var(--muted); text-align: center; padding: 40px 10px; }
+  .error { color: #b3261e; font-weight: 600; }
+  footer { margin-top: 22px; font-size: 13.5px; color: var(--muted); display:flex; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
+  footer a { color: var(--green); }
+  .spinner { display:inline-block; width: 14px; height: 14px; border: 2px solid currentColor; border-right-color: transparent; border-radius: 50%; animation: spin .8s linear infinite; vertical-align: -2px; margin-right: 6px; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  @media (prefers-reduced-motion: reduce) { .spinner { animation: none; } }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <div>
+      <h1>Wpis z dnia</h1>
+      <p class="lede">Kilka zdań o tym, co dziś działo się w grupie, zamienia się we wpis do dziennika zgodny z nową podstawą programową, z obszarami, sprawczością dzieci i wiadomością dla rodziców.</p>
+    </div>
+    <span class="badge">Podstawa programowa 2026 · Dz.U. poz. 378</span>
+  </header>
+
+  <div class="grid">
+    <section class="card" aria-labelledby="in-h">
+      <label id="in-h" for="notes">Co dziś robiła grupa?</label>
+      <textarea id="notes" maxlength="1500" placeholder="Np. Rano spacer do parku, zbieraliśmy liście i kasztany. Dzieci zaproponowały, żeby posegregować je według koloru i wielkości…"></textarea>
+      <div class="row">
+        <select id="group" aria-label="Wiek grupy">
+          <option value="3–4 lata">3–4 lata</option>
+          <option value="5–6 lat" selected>5–6 lat</option>
+          <option value="grupa mieszana">grupa mieszana</option>
+        </select>
+        <label class="check"><input type="checkbox" id="parents" checked> wiadomość dla rodziców</label>
+      </div>
+      <p class="hint">Nie wpisuj imion ani nazwisk dzieci. Jeśli się pojawią, asystent je pominie. Notatki nie są nigdzie zapisywane.</p>
+      <div class="btns">
+        <button class="primary" id="go">Przygotuj wpis</button>
+        <button class="ghost" id="example" type="button">Wstaw przykład</button>
+      </div>
+    </section>
+
+    <section class="card out" id="out" aria-live="polite">
+      <div class="empty">Tu pojawi się wpis do dziennika z kodami z podstawy programowej.<br>Możesz zacząć od przykładu.</div>
+    </section>
+  </div>
+
+  <footer>
+    <span>Źródło: rozporządzenie MEN z 11 marca 2026 r. (Dz.U. 2026 poz. 378), załącznik nr 1. Wpis to propozycja do sprawdzenia przez nauczyciela.</span>
+    <span>Demo zbudowane w jeden dzień z Claude Code przez <a href="https://ask-wiktor.vercel.app/?lang=pl" target="_blank" rel="noopener">Wiktora Grzyba</a> · <a href="https://github.com/Wikiist/wpis-z-dnia" target="_blank" rel="noopener">kod</a></span>
+  </footer>
+</main>
+<script>
+  const $ = (id) => document.getElementById(id);
+  const out = $("out"), go = $("go");
+  const EXAMPLES = [
+    "Rano spacer do parku, zbieraliśmy liście i kasztany. Dzieci zaproponowały, żeby posegregować je według koloru i wielkości, same ustaliły zasady. Potem w sali zrobiliśmy z nich ludziki. Po obiedzie słuchaliśmy opowiadania o jeżu, który szykuje się do zimy.",
+    "Dziś w kąciku konstrukcyjnym grupa budowała most dla samochodów z klocków i kartonów. Pierwszy się zawalił, więc dzieci same wymyśliły, jak go wzmocnić. Policzyliśmy, ile aut wytrzyma. Na koniec każdy narysował swój pomysł na most w zeszycie obserwacji.",
+    "Przygotowywaliśmy występ na Dzień Babci i Dziadka. Dzieci podzieliły się rolami, wybrały piosenki i ćwiczyły ruchy do tańca. Kilkoro dzieci zrobiło zaproszenia. Rozmawialiśmy o tym, jak się czujemy, kiedy występujemy przed innymi.",
+  ];
+  let ex = 0;
+  $("example").addEventListener("click", () => { $("notes").value = EXAMPLES[ex++ % EXAMPLES.length]; $("notes").focus(); });
+
+  const esc = (s) => String(s || "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+  function codes(list) {
+    if (!list.length) return '<p class="hint">Brak w tym wpisie.</p>';
+    return '<ul class="codes">' + list.map((c) => `<li><span class="code">${esc(c.code)}</span><div>${esc(c.why)}<small>${esc(c.area)}: „${esc(c.text)}”</small></div></li>`).join("") + "</ul>";
+  }
+  function copyBtn(id) { return `<button class="copy" type="button" data-copy="${id}">Kopiuj</button>`; }
+  function render(r) {
+    out.innerHTML = `
+      <div class="section"><div class="label">Temat dnia</div><h2>${esc(r.temat)}</h2></div>
+      <div class="section"><div class="label">Wpis do dziennika ${copyBtn("t-wpis")}</div><p id="t-wpis">${esc(r.wpis)}</p></div>
+      <div class="section"><div class="label">Sprawczość dzieci</div><p>${esc(r.sprawczosc)}</p></div>
+      <div class="section"><div class="label">Obszary podstawy programowej</div>${codes(r.obszary || [])}</div>
+      <div class="section"><div class="label">Doświadczenia edukacyjne (co najmniej raz w roku)</div>${codes(r.doswiadczenia || [])}</div>
+      ${r.dla_rodzicow ? `<div class="section"><div class="label">Wiadomość dla rodziców ${copyBtn("t-rodzice")}</div><p id="t-rodzice">${esc(r.dla_rodzicow)}</p></div>` : ""}
+      <div class="section"><div class="label">Pomysł na jutro</div><p>${esc(r.pomysl_na_jutro)}</p></div>`;
+    out.querySelectorAll("[data-copy]").forEach((b) => b.addEventListener("click", () => {
+      const el = document.getElementById(b.dataset.copy);
+      const done = () => { b.textContent = "Skopiowano"; setTimeout(() => (b.textContent = "Kopiuj"), 1500); };
+      try { navigator.clipboard.writeText(el.innerText).then(done, () => {}); } catch {}
+    }));
+  }
+  go.addEventListener("click", async () => {
+    const notes = $("notes").value.trim();
+    if (notes.length < 15) { out.innerHTML = '<p class="error">Opisz dzień w 2–3 zdaniach.</p>'; return; }
+    go.disabled = true; go.innerHTML = '<span class="spinner"></span>Przygotowuję…';
+    out.innerHTML = '<div class="empty"><span class="spinner"></span>Czytam notatki i dopasowuję je do podstawy programowej…</div>';
+    try {
+      const r = await fetch("/api/entry", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ notes, group: $("group").value, parents: $("parents").checked }) });
+      const data = await r.json();
+      if (data.error) out.innerHTML = `<p class="error">${esc(data.error)}</p>`; else render(data);
+    } catch { out.innerHTML = '<p class="error">Brak połączenia. Spróbuj ponownie.</p>'; }
+    go.disabled = false; go.textContent = "Przygotuj wpis";
+  });
+</script>
+</body>
+</html>

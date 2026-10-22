@@ -1,0 +1,3 @@
+{
+  "functions": { "api/entry.js": { "includeFiles": "data/obszary.json", "maxDuration": 30 } }
+}
