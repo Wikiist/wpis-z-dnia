@@ -2,13 +2,14 @@
 
 Asystent dokumentacji dla nauczycieli przedszkola. Kilka zdań o dniu grupy → wpis do dziennika zgodny z **nową podstawą programową wychowania przedszkolnego** (rozporządzenie MEN z 11 marca 2026 r., Dz.U. 2026 poz. 378, załącznik nr 1), z:
 
-- tematem dnia i opisem tego, co dzieci naprawdę robiły (bez gotowców),
-- sprawczością dzieci (co wybrały, zaproponowały, zrobiły same),
-- kodami osiągnięć z 9 obszarów podstawy i doświadczeń edukacyjnych (D.1–D.7), z oficjalnym brzmieniem,
-- pracą w strefach (plan daltoński) z kodami dla każdej strefy,
-- aktywnością na placu zabaw i na zewnątrz,
-- wartościami planu daltońskiego (samodzielność, odpowiedzialność, współpraca, refleksja),
+- wpisem w układzie ramowego planu dnia (zabawy poranne, czynności higieniczne i samoobsługowe, sytuacje edukacyjne, aktywność outdoorowa, aktywności w strefach), z kodami osiągnięć przy każdej aktywności,
+- aktywnościami w strefach planu daltońskiego, łącznie ze strefą ciszy, do skopiowania jako osobny wpis „Praca w strefach”,
+- trybem krótkim (hasłowo) dla dziennika papierowego,
+- podglądem, które z 9 obszarów podstawy dzień objął,
+- sprawczością dzieci, doświadczeniami edukacyjnymi (D.1–D.7) i wartościami planu daltońskiego,
 - wiadomością dla rodziców i pomysłem na jutro.
+
+Układ wpisu odpowiada przykładom z webinaru LiveKid „Jak to dokumentować?” (Polskie Stowarzyszenie Dalton, październik 2026).
 
 **Live:** https://wpis-z-dnia.vercel.app
 

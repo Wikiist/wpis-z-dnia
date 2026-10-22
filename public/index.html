@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Wpis z dnia · asystent dokumentacji przedszkolnej</title>
-<meta name="description" content="Z kilku zdań o dniu grupy powstaje wpis do dziennika zgodny z nową podstawą programową wychowania przedszkolnego (2026), z obszarami, sprawczością dzieci i wiadomością dla rodziców.">
+<meta name="description" content="Z kilku zdań o dniu grupy powstaje wpis do dziennika w układzie planu dnia, z kodami nowej podstawy programowej (2026) przy każdej aktywności, także w strefach planu daltońskiego i na dworze.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
@@ -61,6 +61,16 @@
   .codes li { display:grid; grid-template-columns: auto 1fr; gap: 10px; align-items: start; }
   .code { font: 800 15px "Baloo 2", Nunito, sans-serif; background: var(--marker); border-radius: 8px; padding: 1px 8px; font-variant-numeric: tabular-nums; white-space: nowrap; }
   .codes small { display:block; color: var(--muted); }
+  .plan h3 { font: 800 17px "Baloo 2", Nunito, sans-serif; margin: 12px 0 4px; }
+  .plan h3:first-child { margin-top: 2px; }
+  .item { margin: 0 0 8px; }
+  .item .zn { font: 700 14px Nunito, sans-serif; color: var(--green); display:block; }
+  .item .t { font-weight: 700; }
+  .cov { display:grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 6px; }
+  .cov div { border: 2px solid var(--line); border-radius: 12px; padding: 6px 9px; font-size: 13.5px; color: var(--muted); }
+  .cov div.on { border-color: transparent; background: var(--marker); color: var(--ink); }
+  .cov b { display:block; font-family: "Baloo 2", Nunito, sans-serif; font-size: 14.5px; }
+  .label .btnset { display:flex; gap: 6px; flex-wrap: wrap; }
   .empty { color: var(--muted); text-align: center; padding: 44px 10px; }
   .error { color: #c0392b; font-weight: 700; }
   footer { margin-top: 22px; font-size: 13.5px; color: var(--muted); display:flex; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
@@ -75,7 +85,7 @@
   <header>
     <div>
       <h1><span>Wpis z dnia</span></h1>
-      <p class="lede">Kilka zdań o tym, co dziś działo się w grupie, zamienia się we wpis do dziennika zgodny z nową podstawą programową, z obszarami, sprawczością dzieci i wiadomością dla rodziców.</p>
+      <p class="lede">Kilka zdań o dniu grupy zamienia się we wpis do dziennika w układzie planu dnia: każda aktywność, także w strefach i na dworze, z kodami z nowej podstawy programowej.</p>
     </div>
     <div class="tools">
       <span class="badge">Podstawa programowa 2026 · Dz.U. poz. 378</span>
@@ -86,13 +96,14 @@
   <div class="grid">
     <section class="card" aria-labelledby="in-h">
       <label id="in-h" for="notes">Co dziś robiła grupa?</label>
-      <textarea id="notes" maxlength="1500" placeholder="Np. Rano spacer do parku, zbieraliśmy liście i kasztany. Dzieci zaproponowały, żeby posegregować je według koloru i wielkości…"></textarea>
+      <textarea id="notes" maxlength="1500" placeholder="Np. Rano zabawa z chustą animacyjną i nazwy kolorów. Mycie rąk przed śniadaniem. Zajęcia: improwizacje na instrumentach, nauka wierszyka, rzuty piłeczkami…"></textarea>
       <details class="extra" id="zones-box">
-        <summary>Praca w strefach (plan daltoński)</summary>
-        <textarea id="zones" class="small" maxlength="1200" placeholder="Np. Strefa matematyczna: dzieci układały liczmany z kasztanów według liczby kropek. Strefa przyrodnicza: obserwacja liści przez lupę i rysunek. Strefa konstrukcyjna: wieża z klocków dla misia…"></textarea>
+        <summary>Aktywności w strefach (plan daltoński)</summary>
+        <textarea id="zones" class="small" maxlength="1500" placeholder="Np. Strefa przyrodnicza: magnesy i przedmioty z sali. Strefa językowa: układanie żołędzi na literach. Strefa ciszy: wiatraczek do dmuchania i kartki do rysowania emocji…"></textarea>
+        <p class="hint">Wpisz to, co przygotowałaś w kącikach na dziś lub na ten tydzień, a nie to, co robiło każde dziecko. Strefa ciszy też się liczy.</p>
       </details>
       <details class="extra" id="outdoor-box">
-        <summary>Plac zabaw i na zewnątrz</summary>
+        <summary>Aktywność outdoorowa: plac zabaw, ogród, spacer</summary>
         <textarea id="outdoor" class="small" maxlength="600" placeholder="Np. Na placu zabaw dzieci same ustaliły zasady gry w berka, budowały w piaskownicy tunel, zbierały patyki do kącika przyrody…"></textarea>
       </details>
       <div class="row">
@@ -102,6 +113,7 @@
           <option value="grupa mieszana">grupa mieszana</option>
         </select>
         <label class="check"><input type="checkbox" id="parents" checked> wiadomość dla rodziców</label>
+        <label class="check"><input type="checkbox" id="short"> krótko, hasłami (dziennik papierowy)</label>
       </div>
       <p class="hint">Nie wpisuj imion ani nazwisk dzieci. Jeśli się pojawią, asystent je pominie. Notatki nie są nigdzie zapisywane.</p>
       <div class="btns">
@@ -111,7 +123,7 @@
     </section>
 
     <section class="card out" id="out" aria-live="polite">
-      <div class="empty">Tu pojawi się wpis do dziennika z kodami z podstawy programowej.<br>Możesz zacząć od przykładu.</div>
+      <div class="empty">Tu pojawi się wpis do dziennika w układzie planu dnia, z kodami przy każdej aktywności.<br>Możesz zacząć od przykładu.</div>
     </section>
   </div>
 
@@ -137,19 +149,19 @@
   applyTheme();
   const out = $("out"), go = $("go");
   const EXAMPLES = [
-    "Rano spacer do parku, zbieraliśmy liście i kasztany. Dzieci zaproponowały, żeby posegregować je według koloru i wielkości, same ustaliły zasady. Potem w sali zrobiliśmy z nich ludziki. Po obiedzie słuchaliśmy opowiadania o jeżu, który szykuje się do zimy.",
-    "Dziś w kąciku konstrukcyjnym grupa budowała most dla samochodów z klocków i kartonów. Pierwszy się zawalił, więc dzieci same wymyśliły, jak go wzmocnić. Policzyliśmy, ile aut wytrzyma. Na koniec każdy narysował swój pomysł na most w zeszycie obserwacji.",
-    "Przygotowywaliśmy występ na Dzień Babci i Dziadka. Dzieci podzieliły się rolami, wybrały piosenki i ćwiczyły ruchy do tańca. Kilkoro dzieci zrobiło zaproszenia. Rozmawialiśmy o tym, jak się czujemy, kiedy występujemy przed innymi.",
+    "Rano zabawa z chustą animacyjną, dzieci powtarzały nazwy kolorów po polsku i po angielsku. Przed śniadaniem mycie rąk, dzieci same pilnowały kolejki do umywalki. Zajęcia: improwizacje na instrumentach do wakacyjnej piosenki, dzieci same wybierały instrumenty. Potem nauka krótkiej rymowanki i zabawa z piłeczkami: rzuty i turlanie w przód, w tył i na boki.",
+    "Rano dzieci budowały z klocków garaże dla swoich aut. Po śniadaniu samodzielne sprzątanie stolików. Zajęcia: most z kartonów dla samochodów. Pierwszy się zawalił, więc dzieci same wymyśliły, jak go wzmocnić, i policzyły, ile aut wytrzyma. Na koniec każde dziecko narysowało swój pomysł na most.",
+    "Rano rozmowa w kręgu o tym, jak się dziś czujemy, i pokazywanie emocji minami. Po zabawie dzieci same odkładały zabawki na miejsce. Zajęcia: przygotowanie występu na Dzień Babci i Dziadka, dzieci podzieliły się rolami i wybrały piosenki. Kilkoro dzieci zrobiło zaproszenia.",
   ];
   const EX_ZONES = [
-    "Strefa matematyczna: dzieci liczyły kasztany i układały je w zbiory po 5. Strefa przyrodnicza: oglądały liście przez lupę i rysowały ich kształty w zeszycie obserwacji. Strefa artystyczna: odbijały liście farbą na papierze. Zadania dzieci wybierały same z tablicy planu, dwie pary pracowały razem.",
-    "Strefa konstrukcyjna: dzieci budowały most z klocków i sprawdzały, ile aut wytrzyma. Strefa językowa: układały historyjkę obrazkową o budowie mostu i opowiadały ją kolegom. Kto skończył, przesuwał swój znaczek na tablicy planu i pomagał innej parze.",
-    "Strefa muzyczna: dzieci ćwiczyły rytm piosenki na instrumentach, które zrobiły same z butelek. Strefa artystyczna: przygotowywały zaproszenia dla babć i dziadków. Strefa czytelnicza: oglądały książki o emocjach i opowiadały, kiedy czują tremę.",
+    "Strefa działań przyrodniczych: odkrywanie, które przedmioty z sali przyciąga magnes. Strefa działań językowych: układanie kamyczków i żołędzi na wybranych literach. Strefa działań artystycznych: malowanie akwarelami zachodu słońca, mieszanie barw. Strefa ciszy: wiatraczek do dmuchania, spokojne oddechy, kartki do rysowania swoich emocji.",
+    "Strefa budowania i konstruowania: budowle z klocków i rolek inspirowane zdjęciami słynnych budowli. Strefa matematyczna: ważenie kasztanów na wadze szalkowej i porównywanie, co cięższe. Strefa czytelnicza: książki o mostach i opowiadanie historyjek obrazkowych. Zadania dzieci wybierają same z tablicy planu.",
+    "Strefa muzyczna: instrumenty z butelek i ćwiczenie rytmu piosenki. Strefa artystyczna: zaproszenia dla babć i dziadków. Strefa umiejętności odpoczywania: wygodne poduchy, ciche nagranie szumu morza, masażyki w parach.",
   ];
   const EX_OUT = [
-    "Na placu zabaw dzieci same ustaliły zasady gry w berka i pilnowały, żeby wszyscy grali bezpiecznie. W piaskownicy budowały tunel dla jeża z patyków i liści.",
-    "Na placu zabaw dzieci budowały z dużych klocków piankowych tor przeszkód i na zmianę go pokonywały, licząc, ile przeszkód udało się przejść.",
-    "Na placu zabaw ćwiczyliśmy taniec do występu na świeżym powietrzu, dzieci same podzieliły się na pary.",
+    "Wyjście do przedszkolnego ogrodu warzywnego: dzieci oglądały grządki i narzędzia ogrodnicze, przypomnieliśmy zasady bezpieczeństwa na dworze.",
+    "Na placu zabaw dzieci budowały z dużych klocków piankowych tor przeszkód i na zmianę go pokonywały, licząc przeszkody.",
+    "Na placu zabaw dzieci same ustaliły zasady gry w berka i pilnowały, żeby wszyscy grali bezpiecznie.",
   ];
   let ex = 0;
   $("example").addEventListener("click", () => {
@@ -159,6 +171,8 @@
   });
 
   const esc = (s) => String(s || "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+  const ROMAN = ["I", "II", "III", "IV", "V", "VI"];
+  const codeStr = (list) => "(" + list.map((c) => c.code).join("; ") + ")";
   function codes(list) {
     if (!list.length) return '<p class="hint">Brak w tym wpisie.</p>';
     return '<ul class="codes">' + list.map((c) => `<li><span class="code">${esc(c.code)}</span><div>${esc(c.why)}<small>${esc(c.area)}: „${esc(c.text)}”</small></div></li>`).join("") + "</ul>";
@@ -167,32 +181,49 @@
     if (!list || !list.length) return "";
     return '<div class="chips">' + list.map((c) => `<span class="chip" title="${esc(c.area)}: ${esc(c.text)}">${esc(c.code)}</span>`).join("") + "</div>";
   }
-  function zonesHtml(list) {
-    if (!list.length) return "";
-    return '<div class="section"><div class="label">Praca w strefach</div>' + list.map((z) => `<div class="zone"><b>${esc(z.strefa)}</b><div>${esc(z.co)}</div>${chips(z.codes)}</div>`).join("") + "</div>";
+  function planHtml(plan) {
+    if (!plan.length) return '<p class="hint">Za mało informacji w notatkach.</p>';
+    return '<div class="plan">' + plan.map((s, i) => `<h3>${ROMAN[i]}. ${esc(s.sekcja)}</h3>` + s.pozycje.map((p) =>
+      `<div class="item">${p.strefa ? `<span class="zn">${esc(p.strefa)}</span>` : ""}<span class="t">„${esc(p.tytul)}”</span> – ${esc(p.opis)}${chips(p.codes)}</div>`).join("")).join("") + "</div>";
+  }
+  // plain text in the layout directors know from paper and electronic diaries
+  function planText(plan, onlyZones) {
+    const secs = plan.map((s, i) => ({ ...s, n: ROMAN[i] })).filter((s) => !onlyZones || s.sekcja === "Aktywności w strefach");
+    return secs.map((s) => `${onlyZones ? "Praca w strefach" : s.n + ". " + s.sekcja}:\n` + s.pozycje.map((p) =>
+      `${p.strefa ? p.strefa + ":\n" : ""}„${p.tytul}” – ${p.opis}${p.codes.length ? "\n" + codeStr(p.codes) : ""}`).join("\n")).join("\n\n");
+  }
+  function coverageHtml(cov) {
+    const on = cov.filter((a) => a.codes.length).length;
+    return `<div class="section"><div class="label">Obszary podstawy dziś: ${on} z 9</div><div class="cov">` +
+      cov.map((a) => `<div class="${a.codes.length ? "on" : ""}"><b>${esc(a.obszar.replace("Obszar ", ""))}</b>${a.codes.length ? esc(a.codes.join("; ")) : "jeszcze nie dziś"}</div>`).join("") + "</div></div>";
   }
   function valuesHtml(d) {
     const names = { samodzielnosc: "Samodzielność", odpowiedzialnosc: "Odpowiedzialność", wspolpraca: "Współpraca", refleksja: "Refleksja" };
     const items = Object.entries(names).filter(([k]) => d[k]).map(([k, n]) => `<div><b>${n}</b>${esc(d[k])}</div>`);
     return items.length ? `<div class="section"><div class="label">Wartości planu daltońskiego</div><div class="values">${items.join("")}</div></div>` : "";
   }
-  function copyBtn(id) { return `<button class="copy" type="button" data-copy="${id}">Kopiuj</button>`; }
+  const texts = {};
+  function copyBtn(key, label = "Kopiuj") { return `<button class="copy" type="button" data-copy="${key}">${label}</button>`; }
   function render(r) {
+    const plan = r.plan_dnia || [];
+    texts.plan = planText(plan, false);
+    texts.zones = planText(plan, true);
+    texts.parents = r.dla_rodzicow || "";
+    const hasZones = plan.some((s) => s.sekcja === "Aktywności w strefach");
     out.innerHTML = `
       <div class="section"><div class="label">Temat dnia</div><h2>${esc(r.temat)}</h2></div>
-      <div class="section"><div class="label">Wpis do dziennika ${copyBtn("t-wpis")}</div><p id="t-wpis">${esc(r.wpis)}</p></div>
-      <div class="section"><div class="label">Sprawczość dzieci</div><p>${esc(r.sprawczosc)}</p></div>
-      <div class="section"><div class="label">Obszary podstawy programowej</div>${codes(r.obszary || [])}</div>
-      <div class="section"><div class="label">Doświadczenia edukacyjne (co najmniej raz w roku)</div>${codes(r.doswiadczenia || [])}</div>
-      ${zonesHtml(r.strefy || [])}
-      ${r.na_zewnatrz ? `<div class="section"><div class="label">Plac zabaw i na zewnątrz</div><p>${esc(r.na_zewnatrz.opis)}</p>${chips(r.na_zewnatrz.codes)}</div>` : ""}
+      <div class="section"><div class="label">Wpis do dziennika <span class="btnset">${copyBtn("plan", "Kopiuj całość")}${hasZones ? copyBtn("zones", "Kopiuj strefy") : ""}</span></div>${planHtml(plan)}
+        ${hasZones ? '<p class="hint">„Kopiuj strefy” daje gotowy osobny wpis „Praca w strefach”, np. jako nowy temat w dzienniku elektronicznym.</p>' : ""}</div>
+      ${coverageHtml(r.pokrycie || [])}
+      ${r.sprawczosc ? `<div class="section"><div class="label">Sprawczość dzieci</div><p>${esc(r.sprawczosc)}</p></div>` : ""}
+      ${(r.doswiadczenia || []).length ? `<div class="section"><div class="label">Doświadczenia edukacyjne (co najmniej raz w roku)</div>${codes(r.doswiadczenia)}</div>` : ""}
       ${valuesHtml(r.dalton || {})}
-      ${r.dla_rodzicow ? `<div class="section"><div class="label">Wiadomość dla rodziców ${copyBtn("t-rodzice")}</div><p id="t-rodzice">${esc(r.dla_rodzicow)}</p></div>` : ""}
-      <div class="section"><div class="label">Pomysł na jutro</div><p>${esc(r.pomysl_na_jutro)}</p></div>`;
+      ${r.dla_rodzicow ? `<div class="section"><div class="label">Wiadomość dla rodziców ${copyBtn("parents")}</div><p>${esc(r.dla_rodzicow)}</p></div>` : ""}
+      ${r.pomysl_na_jutro ? `<div class="section"><div class="label">Pomysł na jutro</div><p>${esc(r.pomysl_na_jutro)}</p></div>` : ""}`;
     out.querySelectorAll("[data-copy]").forEach((b) => b.addEventListener("click", () => {
-      const el = document.getElementById(b.dataset.copy);
-      const done = () => { b.textContent = "Skopiowano"; setTimeout(() => (b.textContent = "Kopiuj"), 1500); };
-      try { navigator.clipboard.writeText(el.innerText).then(done, () => {}); } catch {}
+      const label = b.textContent;
+      const done = () => { b.textContent = "Skopiowano"; setTimeout(() => (b.textContent = label), 1500); };
+      try { navigator.clipboard.writeText(texts[b.dataset.copy]).then(done, () => {}); } catch {}
     }));
   }
   go.addEventListener("click", async () => {
@@ -201,7 +232,7 @@
     go.disabled = true; go.innerHTML = '<span class="spinner"></span>Przygotowuję…';
     out.innerHTML = '<div class="empty"><span class="spinner"></span>Czytam notatki i dopasowuję je do podstawy programowej…</div>';
     try {
-      const r = await fetch("/api/entry", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ notes, zones: $("zones").value.trim(), outdoor: $("outdoor").value.trim(), group: $("group").value, parents: $("parents").checked }) });
+      const r = await fetch("/api/entry", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ notes, zones: $("zones").value.trim(), outdoor: $("outdoor").value.trim(), short: $("short").checked, group: $("group").value, parents: $("parents").checked }) });
       const data = await r.json();
       if (data.error) out.innerHTML = `<p class="error">${esc(data.error)}</p>`; else render(data);
     } catch { out.innerHTML = '<p class="error">Brak połączenia. Spróbuj ponownie.</p>'; }
