@@ -184,13 +184,13 @@
   function planHtml(plan) {
     if (!plan.length) return '<p class="hint">Za mało informacji w notatkach.</p>';
     return '<div class="plan">' + plan.map((s, i) => `<h3>${ROMAN[i]}. ${esc(s.sekcja)}</h3>` + s.pozycje.map((p) =>
-      `<div class="item">${p.strefa ? `<span class="zn">${esc(p.strefa)}</span>` : ""}<span class="t">„${esc(p.tytul)}”</span> – ${esc(p.opis)}${chips(p.codes)}</div>`).join("")).join("") + "</div>";
+      `<div class="item">${p.strefa ? `<span class="zn">${esc(p.strefa)}</span>` : ""}${p.tytul ? `<span class="t">„${esc(p.tytul)}”</span> – ` : ""}${esc(p.opis)}${chips(p.codes)}</div>`).join("")).join("") + "</div>";
   }
   // plain text in the layout directors know from paper and electronic diaries
   function planText(plan, onlyZones) {
     const secs = plan.map((s, i) => ({ ...s, n: ROMAN[i] })).filter((s) => !onlyZones || s.sekcja === "Aktywności w strefach");
     return secs.map((s) => `${onlyZones ? "Praca w strefach" : s.n + ". " + s.sekcja}:\n` + s.pozycje.map((p) =>
-      `${p.strefa ? p.strefa + ":\n" : ""}„${p.tytul}” – ${p.opis}${p.codes.length ? "\n" + codeStr(p.codes) : ""}`).join("\n")).join("\n\n");
+      `${p.strefa ? p.strefa + ":\n" : ""}${p.tytul ? `„${p.tytul}” – ` : ""}${p.opis}${p.codes.length ? "\n" + codeStr(p.codes) : ""}`).join("\n")).join("\n\n");
   }
   function coverageHtml(cov) {
     const on = cov.filter((a) => a.codes.length).length;

@@ -23,7 +23,9 @@ const SYSTEM = `Jesteś asystentem nauczyciela przedszkola. Z krótkich notatek 
 Układ wpisu (ramowy plan dnia). Używaj tylko tych sekcji, które wynikają z notatek, w tej kolejności:
 ${SECTIONS.map((s, i) => `${i + 1}. ${s}`).join("\n")}
 
-Każda pozycja to jedna aktywność: krótki tytuł (np. Karuzela śmiechu, Dokąd potoczy się piłka), jedno zdanie opisu tego, co dzieci robiły, i lista kodów z podstawy, które ta aktywność realizuje (zwykle 2–6, maksymalnie 8). Kody muszą wynikać z opisu; lepiej mniej i trafnie.
+Każda pozycja to jedna aktywność zapisana tak, jak nauczycielka pisze w dzienniku: konkretnie, słowami z notatek, zwykle rzeczownikowo, np. „Zabawa ruchowa z chustą animacyjną, utrwalanie nazw kolorów podstawowych.”, „Improwizacje instrumentalne na trójkątach i bębenkach, nauka nowego wiersza.”. Do każdej pozycji lista kodów z podstawy, które ta aktywność realizuje (zwykle 2–5, maksymalnie 8). Kody muszą wynikać z opisu; lepiej mniej i trafnie.
+- Pole „tytul” wypełniaj tylko wtedy, gdy nauczycielka sama nadała zajęciom tytuł w notatkach. Nie wymyślaj tytułów i nie streszczaj aktywności jednym ogólnym słowem (np. „Przyroda”, „Język”, „Muzyka i ruch”). Inaczej zostaw pusty tekst.
+- Nie gub szczegółów: każda czynność, materiał i miejsce z notatek (np. kolory, instrumenty, wiersz, piaskownica, książeczki) musi trafić do wpisu. Nie dopisuj niczego, czego nie ma w notatkach.
 
 Aktywności w strefach (plan daltoński):
 - Dla każdej strefy (kącika) podaj nazwę strefy, np. Strefa działań przyrodniczych, Strefa działań językowych, Strefa działań technicznych, Strefa działań artystycznych, Strefa czytelnicza, Strefa budowania i konstruowania, Strefa ciszy albo Strefa umiejętności odpoczywania.
@@ -41,14 +43,14 @@ Zasady języka:
 
 Pozostałe pola:
 - doswiadczenia: 0–2 kody D.x tylko jeśli wynikają z notatek, z jednym zdaniem dlaczego.
-- dalton: dla samodzielności, odpowiedzialności, współpracy i refleksji jedno zdanie tylko wtedy, gdy wynika z notatek; inaczej pusty tekst.
-- dla_rodzicow: ciepła, 3–4 zdania, konkretna, z jednym pytaniem, które rodzic może zadać dziecku w domu, sformułowanym bez rodzaju gramatycznego (np. „Który instrument był dziś najfajniejszy?”, a nie „Jaki instrument wybrałeś?”).
+- dalton: dla samodzielności, odpowiedzialności, współpracy i refleksji jedno zdanie tylko wtedy, gdy notatki wprost to opisują. Refleksja to dzieci, które mówią, oceniają albo porównują to, co zrobiły; sam odpoczynek nią nie jest. Nie dopisuj zdarzeń spoza notatek (np. sprzątania). Gdy nie ma podstaw, pusty tekst.
+- dla_rodzicow: wiadomość, którą nauczycielka wysyła rodzicom w aplikacji przedszkola. Pisze do rodziców w drugiej osobie liczby mnogiej (Wy), ciepło i zwyczajnie, jak do znajomych rodziców, bez urzędowych zwrotów („aktywnie spędziła czas”, „w ramach zajęć”). Bez powitania i podpisu. 2–3 zdania o 2–3 najciekawszych konkretach z dnia, potem jedno zdanie zaczynające się od „Zapytajcie w domu” z pytaniem do dziecka o jedną konkretną rzecz z dnia. Pytanie bez rodzaju gramatycznego (np. „co…”, „który…”, nie „co zrobiłeś”). Pytanie dziecka nigdy nie stoi samo, bez tego wstępu.
 - Zwróć wyłącznie JSON według schematu.
 
 Lista kodów z podstawy programowej:
 ${CURRICULUM}`;
 
-const SHORT = "TRYB KRÓTKI (dziennik papierowy, mało miejsca): każde pole „opis” to samo hasło, najwyżej 6 słów, bez czasownika w czasie przeszłym i bez kropki, np. „badanie magnetyzmu”, „technika akwareli”, „mycie rąk przed posiłkiem”. Najwyżej 3 kody na pozycję. Temat, sprawczość i wiadomość dla rodziców też krótsze.";
+const SHORT = "TRYB KRÓTKI (dziennik papierowy, mało miejsca): każde pole „opis” to hasło, najwyżej 10 słów, bez czasownika w czasie przeszłym i bez kropki, np. „zabawa z chustą animacyjną, nazwy kolorów”, „improwizacje na trójkątach i bębenkach”, „mycie rąk przed śniadaniem”. Konkrety z notatek zostają, skracasz tylko słowa wokół nich. Najwyżej 3 kody na pozycję. Temat i sprawczość też krótsze; wiadomość dla rodziców bez zmian.";
 
 const codesArr = { type: "array", items: { type: "string" } };
 const SCHEMA = {
@@ -61,7 +63,7 @@ const SCHEMA = {
         type: "object",
         properties: {
           sekcja: { type: "string", enum: SECTIONS },
-          pozycje: { type: "array", items: { type: "object", properties: { strefa: { type: "string" }, tytul: { type: "string" }, opis: { type: "string" }, codes: codesArr }, required: ["tytul", "opis", "codes"] } },
+          pozycje: { type: "array", items: { type: "object", properties: { strefa: { type: "string" }, tytul: { type: "string" }, opis: { type: "string" }, codes: codesArr }, required: ["opis", "codes"] } },
         },
         required: ["sekcja", "pozycje"],
       },
@@ -98,9 +100,9 @@ export function normalise(out) {
     .filter((s) => s && SECTIONS.includes(s.sekcja))
     .map((s) => ({
       sekcja: s.sekcja,
-      pozycje: (Array.isArray(s.pozycje) ? s.pozycje : []).filter((p) => p && p.tytul).slice(0, 8).map((p) => ({
+      pozycje: (Array.isArray(s.pozycje) ? s.pozycje : []).filter((p) => p && (p.tytul || p.opis)).slice(0, 8).map((p) => ({
         strefa: s.sekcja === "Aktywności w strefach" ? String(p.strefa || "") : "",
-        tytul: String(p.tytul).replace(/^[„"']+|[”"']+$/g, ""),
+        tytul: String(p.tytul || "").trim().replace(/^[„"']+|[”"']+$/g, ""),
         opis: String(p.opis || ""),
         codes: codeList(p.codes),
       })),

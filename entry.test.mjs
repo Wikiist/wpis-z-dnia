@@ -36,3 +36,10 @@ test("coverage counts the 9 areas the day touched", () => {
   assert.equal(r.pokrycie.filter((a) => a.codes.length).length, 2);
   assert.equal(r.dalton.wspolpraca, "");
 });
+
+test("items without a title are kept; the diary line is the description", () => {
+  const r = normalise({ plan_dnia: [{ sekcja: "Czynności higieniczne i samoobsługowe", pozycje: [{ tytul: "", opis: "mycie rąk przed śniadaniem", codes: ["9.7"] }, { opis: "" , codes: [] }] }] });
+  assert.equal(r.plan_dnia[0].pozycje.length, 1);
+  assert.equal(r.plan_dnia[0].pozycje[0].tytul, "");
+  assert.equal(r.plan_dnia[0].pozycje[0].opis, "mycie rąk przed śniadaniem");
+});
